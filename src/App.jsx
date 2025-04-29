@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useAtomValue } from "jotai";
+import AppDetails from "./components/AppDetails";
+import MainCard from "./components/MainCard";
+import { useShowDetails } from "./hooks/useShowDetails";
+import { appTheme } from "./atoms/atoms";
+import { useResponsive } from "./hooks/useResponsive";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { showDetails, handleShowDetails } = useShowDetails();
+  const screen = useResponsive();
+
+  const curTheme = useAtomValue(appTheme);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div
+      className={`h-[100dvh] flex justify-center md:items-center ${
+        curTheme === "modern"
+          ? "bg-light-frost"
+          : curTheme === "warm"
+          ? "bg-cream-beige"
+          : ""
+      }`}
+    >
+      {screen.isMobile ? (
+        <>
+          {!showDetails ? (
+            <MainCard openDetails={handleShowDetails} />
+          ) : (
+            <AppDetails closeDetails={handleShowDetails} />
+          )}
+        </>
+      ) : (
+        <>
+          <MainCard />
+          <AppDetails />
+        </>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;

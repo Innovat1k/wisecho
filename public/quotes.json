@@ -1,0 +1,104 @@
+{
+  "quotes": [
+    {
+      "text": "Le seul moyen de faire un grand travail, c'est d'aimer ce que vous faites.",
+      "author": "Steve Jobs",
+      "theme": "Inspiration"
+    },
+    {
+      "text": "Ne vous inquiétez pas d’être efficace. Soyez simplement utile. L'utilité crée son propre efficacité.",
+      "author": "Robert Green Ingersoll",
+      "theme": "Inspiration"
+    },
+    {
+      "text": "L'amour est la force la plus mystérieuse du monde. Il rend tout humain.",
+      "author": "Mahatma Gandhi",
+      "theme": "Amour"
+    },
+    {
+      "text": "Le meilleur souvenir qu’on peut garder de l’amour, c’est quand il nous a rendu meilleurs.",
+      "author": "Antoine de Saint-Exupéry",
+      "theme": "Amour"
+    },
+    {
+      "text": "Le succès n’est pas la clé du bonheur. Le courage de continuer malgré les échecs, c’est ça le véritable succès.",
+      "author": "Albert Einstein",
+      "theme": "Succès"
+    },
+    {
+      "text": "Le succès n’est pas final, l’échec n’est pas fatal : le courage de continuer est ce qui compte.",
+      "author": "Winston Churchill",
+      "theme": "Succès"
+    },
+    {
+      "text": "Il vaut mieux rester silencieux et passer pour un imbécile que d'ouvrir la bouche et dissiper tout doute.",
+      "author": "Mark Twain",
+      "theme": "Sagesse"
+    },
+    {
+      "text": "Ce qui se voit ne durera pas ; ce qui est caché apparaîtra.",
+      "author": "Lao Tseu",
+      "theme": "Sagesse"
+    },
+    {
+      "text": "La vie est ce qui arrive lorsque vous êtes occupé à faire d’autres plans.",
+      "author": "John Lennon",
+      "theme": "Vie"
+    },
+    {
+      "text": "La vie ne te demande pas d’être le meilleur parmi tous les autres, mais le meilleur version de toi-même.",
+      "author": "Unknown",
+      "theme": "Vie"
+    },
+    {
+      "text": "Le courage, ce n’est pas l’absence de peur, mais la capacité de la surmonter.",
+      "author": "Nelson Mandela",
+      "theme": "Courage"
+    },
+    {
+      "text": "Courage ne signifie pas l’absence de peur, mais la volonté de continuer malgré elle.",
+      "author": "Stephen King",
+      "theme": "Courage"
+    },
+    {
+      "text": "Toujours parler gentiment à quelqu'un... Probablement ils planifient déjà de te tuer.",
+      "author": "George Carlin",
+      "theme": "Humour"
+    },
+    {
+      "text": "Je ne suis pas vieux, je suis juste dans ma phase 'je me fiche de tout'.",
+      "author": "Unknown",
+      "theme": "Humour"
+    },
+    {
+      "text": "La technologie n'est rien. Ce qui est important, c'est que vous avez foi en vos gens, qu'ils ont foi en eux-mêmes, et en leurs rêves.",
+      "author": "Steve Jobs",
+      "theme": "Technologie"
+    },
+    {
+      "text": "L'intelligence artificielle va changer notre monde bien plus rapidement que vous ne le pensez.",
+      "author": "Andrew Ng",
+      "theme": "Technologie"
+    },
+    {
+      "text": "La nature ne triche jamais, ce sont les hommes qui se trompent.",
+      "author": "Jean-Jacques Rousseau",
+      "theme": "Nature"
+    },
+    {
+      "text": "Respecte la Terre, car elle est ta maison.",
+      "author": "Proverbe indien",
+      "theme": "Nature"
+    },
+    {
+      "text": "L’art est une explosion de beauté qui éclate dans nos cœurs.",
+      "author": "Vincent van Gogh",
+      "theme": "Art"
+    },
+    {
+      "text": "L'art ne reproduit pas le visible ; il rend visible.",
+      "author": "Paul Klee",
+      "theme": "Art"
+    }
+  ]
+}
