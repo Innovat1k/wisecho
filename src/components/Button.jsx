@@ -1,8 +1,10 @@
-function Button({ theme, icon, label, type, onClick }) {
+function Button({ type, label, icon, onClick }) {
   return (
     <div
-      className={`flex justify-center gap-2 items-center px-2 py-0.5 rounded cursor-pointer nth-[all]:cursor-pointer ${
-        theme === "soft" ? "bg-amber-300" : "bg-lime-400"
+      className={`flex justify-center gap-2 items-center px-2 py-0.5 rounded cursor-pointer ${
+        type === "submit"
+          ? "bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)]"
+          : "bg-[var(--btn-secondary-bg)] text-[var(--btn-secondary-text)]"
       }`}
     >
       {icon}

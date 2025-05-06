@@ -1,0 +1,187 @@
+body {
+  font-family: "Roboto", "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Roboto", "Lato", sans-serif;
+  font-weight: 700;
+}
+
+/* Variables Globales */
+:root {
+  /* Base */
+  --bg: #fff; /* Fond principal */
+  --container-bg: #f9f9f9; /* Fond du conteneur */
+  --text-primary: #000; /* Texte principal */
+  --text-secondary: #666; /* Texte secondaire */
+
+  /* Titres */
+  --title-main: #222; /* Titre principal */
+  --subtitle: #888; /* Sous-titre */
+
+  /* Texte d'absence de favoris */
+  --no-favorites: #aaa;
+
+  /* ThemeCard */
+  --themecard-bg: #fff; /* Fond du ThemeCard */
+  --themecard-title: #000; /* Titre du ThemeCard */
+  --themecard-text: #555; /* Texte du ThemeCard */
+  --themecard-close-icon: #ccc; /* Icône de fermeture */
+
+  /* Boutons Principaux */
+  --btn-primary-bg: #4287f5; /* Bleu ciel */
+  --btn-primary-text: #fff; /* Texte blanc */
+  --btn-primary-hover: #2176ff; /* Bleu plus foncé */
+  --btn-primary-active: #1e40af; /* Bleu très foncé */
+
+  /* Bouton Secondaire (Ajouter aux Favoris) */
+  --btn-secondary-bg: #81c784; /* Vert clair */
+  --btn-secondary-text: #fff; /* Texte blanc */
+  --btn-secondary-hover: #66bb6a; /* Vert moyen */
+  --btn-secondary-active: #43a047; /* Vert foncé */
+
+  /* Icônes */
+  --icon-primary: #4287f5; /* Couleur principale des icônes */
+  --icon-hover: #2176ff; /* Hover des icônes */
+  --favorite-icon: #e91e63; /* Rose vif */
+  --favorite-icon-hover: #d81b60; /* Rose foncé */
+
+  /* Statistiques */
+  --stats-bg: #fff; /* Fond des blocs statistiques */
+  --stats-text: #333; /* Texte des statistiques */
+
+  /* Blocs Statistiques */
+  --stat-block-shadow: rgba(0, 0, 0, 0.05); /* Ombre légère */
+  --stat-number-text: #3b82f6; /* Couleur par défaut des nombres */
+}
+
+/* Thème Soft & Apaisant */
+body.soft {
+  /* Base */
+  --bg: #f9f9f9; /* Soft White */
+  --container-bg: #f0f0f0; /* Mist Gray */
+  --text-primary: #333333; /* Deep Charcoal */
+  --text-secondary: #4a4a4a; /* Slate Gray */
+
+  /* Titres */
+  --title-main: #2d2d2d; /* Darker Charcoal */
+  --subtitle: #6b7280; /* Gray Blue */
+
+  /* Texte d'absence de favoris */
+  --no-favorites: #888888; /* Medium Gray */
+
+  /* ThemeCard */
+  --themecard-bg: #ffffff;
+  --themecard-title: #2d2d2d;
+  --themecard-text: #4a4a4a;
+
+  /* Hover/Active des Boutons */
+  --btn-primary-hover: #4287f5; /* Sky Blue */
+  --btn-primary-active: #1e90ff; /* Dodger Blue */
+  --btn-secondary-hover: #66bb6a; /* Vert moyen */
+  --btn-secondary-active: #43a047; /* Vert foncé */
+
+  /* Icônes */
+  --icon-primary: #4287f5; /* Sky Blue */
+  --icon-hover: #2176ff; /* Deep Sky Blue */
+  --favorite-icon: #1e90ff; /* Bleu ciel */
+  --favorite-icon-hover: #0d47a1; /* Bleu profond */
+
+  /* Statistiques */
+  --stats-bg: #ffffff; /* Pure White */
+  --stats-text: #4a4a4a; /* Slate Gray */
+
+  /* Blocs Statistiques */
+  --stat-block-bg: #f0f0f0;
+  --stat-block-border: #e0e0e0;
+  --stat-title-text: #6b7280;
+  --stat-number-text: #1e90ff; /* Dodger Blue */
+}
+
+/* Thème Chaleureux & Naturel */
+body.warm {
+  /* Base */
+  --bg: #f5f5dc; /* Cream Beige */
+  --container-bg: #ffe4b5; /* Warm Sand */
+  --text-primary: #5c4033; /* Earth Brown */
+  --text-secondary: #4a4a4a; /* Slate Gray */
+
+  /* Titres */
+  --title-main: #3b2f2f; /* Rich Brown */
+  --subtitle: #8b6914; /* Golden Amber */
+
+  /* Texte d'absence de favoris */
+  --no-favorites: #a0785a; /* Dusty Brown */
+
+  /* ThemeCard */
+  --themecard-bg: #ffffff;
+  --themecard-title: #3b2f2f;
+  --themecard-text: #5c4033;
+
+  /* Hover/Active des Boutons */
+  --btn-primary-hover: #fbc02d; /* Golden Yellow */
+  --btn-primary-active: #cc9900; /* Amber Gold */
+  --btn-secondary-hover: #ff8fa3; /* Rose clair */
+  --btn-secondary-active: #ff5c8d; /* Rose foncé */
+
+  /* Icônes */
+  --icon-primary: #fbc02d; /* Golden Yellow */
+  --icon-hover: #ffa000; /* Orange Sunrise */
+  --favorite-icon: #fbc02d; /* Jaune doré */
+  --favorite-icon-hover: #cc9900; /* Ambre */
+
+  /* Statistiques */
+  --stats-bg: #ffe4b5; /* Warm Sand */
+  --stats-text: #5c4033; /* Earth Brown */
+
+  /* Blocs Statistiques */
+  --stat-block-bg: #ffe4b5;
+  --stat-block-border: #ffd700;
+  --stat-title-text: #8b6914;
+  --stat-number-text: #cc9900; /* Amber Gold */
+}
+
+/* Thème Moderne & Professionnel */
+body.modern {
+  /* Base */
+  --bg: #e8f0fe; /* Light Frost */
+  --container-bg: #ffffff; /* Pure White */
+  --text-primary: #0f4c81; /* Ocean Blue */
+  --text-secondary: #333333; /* Deep Charcoal */
+
+  /* Titres */
+  --title-main: #0d47a1; /* Deep Navy */
+  --subtitle: #555555; /* Dark Gray */
+
+  /* Texte d'absence de favoris */
+  --no-favorites: #999999; /* Cool Gray */
+
+  /* ThemeCard */
+  --themecard-bg: #fafafa;
+  --themecard-title: #1a237e; /* Royal Indigo */
+  --themecard-text: #3949ab; /* Strong Blue */
+
+  /* Hover/Active des Boutons */
+  --btn-primary-hover: #ff9800; /* Coral Blaze */
+  --btn-primary-active: #e64a19; /* Deep Flame */
+  --btn-secondary-hover: #abebc6; /* Menthe clair */
+  --btn-secondary-active: #4caf50; /* Vert menthe foncé */
+
+  /* Icônes */
+  --icon-primary: #ff9800; /* Coral Blaze */
+  --icon-hover: #ff5722; /* Flame Red */
+  --favorite-icon: #ff5722; /* Flamme rouge */
+  --favorite-icon-hover: #e64a19; /* Rouge profond */
+
+  /* Statistiques */
+  --stats-bg: #ffffff; /* Pure White */
+  --stats-text: #0f4c81; /* Ocean Blue */
+
+  /* Blocs Statistiques */
+  --stat-block-bg: #ffffff;
+  --stat-block-border: #eceff1;
+  --stat-title-text: #555555;
+  --stat-number-text: #ff5722; /* Flame Red */
+}

@@ -11,8 +11,7 @@ function ActionForm({ newQuote }) {
       onSubmit={newQuote}
     >
       <Button
-        theme={"warm"}
-        icon={<FiHeart className="fill-white rounded-full" />}
+        icon={<FiHeart className="fill-white" />}
         label={"Add to favorite"}
         onClick={addFavorite}
         type={"button"}
