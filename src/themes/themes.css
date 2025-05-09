@@ -73,12 +73,16 @@ body.soft {
   --no-favorites: #888888; /* Medium Gray */
 
   /* ThemeCard */
-  --themecard-bg: #ffffff;
-  --themecard-title: #2d2d2d;
-  --themecard-text: #4a4a4a;
+  --th-bg: #ffffff;
+  --th-title: #2d2d2d;
+  --th-text: #4a4a4a;
+  --th-close-icon-hover: #64b5f6; /* Bleu plus intense */
+  --th-btn-hover: #bbdefb; /* Bleu pâle */
+  --th-btn-active: #64b5f6; /* Bleu actif */
+  
 
   /* Hover/Active des Boutons */
-  --btn-primary-hover: #4287f5; /* Sky Blue */
+  --btn-primary-hover: #3578e4; /* Sky Blue */
   --btn-primary-active: #1e90ff; /* Dodger Blue */
   --btn-secondary-hover: #66bb6a; /* Vert moyen */
   --btn-secondary-active: #43a047; /* Vert foncé */
@@ -116,9 +120,12 @@ body.warm {
   --no-favorites: #a0785a; /* Dusty Brown */
 
   /* ThemeCard */
-  --themecard-bg: #ffffff;
-  --themecard-title: #3b2f2f;
-  --themecard-text: #5c4033;
+  --th-bg: #ffffff;
+  --th-title: #3b2f2f;
+  --th-text: #5c4033;
+  --th-close-icon-hover: #fbc02d; /* Doré plus intense */
+  --th-btn-hover: #ffe0b2; /* Beige plus intense */
+  --th-btn-active: #fbc02d; /* Doré actif */
 
   /* Hover/Active des Boutons */
   --btn-primary-hover: #fbc02d; /* Golden Yellow */
@@ -159,14 +166,17 @@ body.modern {
   --no-favorites: #999999; /* Cool Gray */
 
   /* ThemeCard */
-  --themecard-bg: #fafafa;
-  --themecard-title: #1a237e; /* Royal Indigo */
-  --themecard-text: #3949ab; /* Strong Blue */
+  --th-bg: #fafafa;
+  --th-title: #1a237e; /* Royal Indigo */
+  --th-text: #3949ab; /* Strong Blue */
+  --th-close-icon-hover: #ff5722; /* Corail vif */
+  --th-btn-hover: #c8e6c9; /* Vert clair */
+  --th-btn-active: #81c784; /* Vert actif */
 
   /* Hover/Active des Boutons */
   --btn-primary-hover: #ff9800; /* Coral Blaze */
   --btn-primary-active: #e64a19; /* Deep Flame */
-  --btn-secondary-hover: #abebc6; /* Menthe clair */
+  --btn-secondary-hover: #589270; /* Menthe clair */
   --btn-secondary-active: #4caf50; /* Vert menthe foncé */
 
   /* Icônes */

@@ -1,4 +1,4 @@
-import { FiX } from "react-icons/fi";
+import { LuX } from "react-icons/lu";
 import Button from "./Button";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -9,46 +9,53 @@ function ThemeCard({ isOpened, closeTMenu, changeTheme }) {
     <AnimatePresence>
       {isOpened && (
         <>
-          <div className="fixed z-10 top-0 bg-slate-900/90 w-full h-[100vh]"></div>
           <motion.div
-            initial={{ y: -50 }}
-            animate={{ y: 0, transition: { type: "tween" } }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed z-10 top-0 bg-neutral-800/90 w-full h-[100vh]"
+            key="th-overlay"
+          ></motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { type: "spring" } }}
             exit={{
-              y: -50,
               opacity: 0,
-              transition: { type: "tween", duration: 0.1 },
+              transition: { type: "tween", duration: 0.2 },
             }}
-            className="fixed z-20 top-10 w-4/5 bg-[var(--themecard-bg)] my-auto rounded"
+            className="fixed z-20 top-10 w-4/5 bg-[var(--th-bg)] my-auto rounded-lg p-4"
+            key="th-select"
           >
-            <div className="p-4 relative">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-center mb-4 text-[var(--themecard-title)]">
-                  Change theme
-                </h2>
-                <FiX
-                  className="fill-[var(--themecard-close-icon)]"
-                  onClick={closeTMenu}
-                  size={25}
-                />
-              </div>
-
-              <div className="flex justify-between items-center mb-6 gap-3">
-                {themesList.map((theme, index) => (
-                  <button
-                    className="bg-[var(--themecard-btn-bg)] hover:bg-[var(--themecard-btn-hover-bg)] active:bg-[var(--themecard-btn-active-bg)] w-1/3 text-center border p-1 rounded hover:shadow-md transition-colors"
-                    key={index}
-                    onClick={() => changeTheme(theme)}
-                  >
-                    <p>{theme}</p>
-                  </button>
-                ))}
-              </div>
-
-              <form className="flex justify-end gap-4" onSubmit={changeTheme}>
-                <Button label={"Cancel"} type={"button"} onClick={closeTMenu} />
-                <Button label={"Save"} type={"submit"} />
-              </form>
+            <div className="flex justify-between mb-4">
+              <h2 className="text-xl mb-4 text-[var(--th-title)]">
+                Change theme
+              </h2>
+              <LuX
+                className="hover:scale-110 text-[var(--th-close-icon)] hover:text-[var(--th-close-icon-hover)] cursor-pointer duration-300"
+                onClick={closeTMenu}
+                size={25}
+              />
             </div>
+
+            <div className="flex justify-between items-center mb-6 gap-3">
+              {themesList.map((theme, index) => (
+                <button
+                  className="bg-zinc-200 hover:bg-[var(--th-btn-hover)] active:bg-[var(--th-btn-active-bg)] w-1/3 p-1 rounded hover:shadow-sm transition-colors duration-300 cursor-pointer"
+                  key={index}
+                  onClick={() => changeTheme(theme)}
+                >
+                  <p>{theme}</p>
+                </button>
+              ))}
+            </div>
+
+            <form
+              className="w-1/2. flex grid. grid-cols-2 justify-end gap-4"
+              onSubmit={changeTheme}
+            >
+              <Button label="Cancel" type="button" onClick={closeTMenu} />
+              <Button label="Save" type="submit" />
+            </form>
           </motion.div>
         </>
       )}

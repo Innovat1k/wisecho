@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div
-      className={`h-[100dvh] flex items-start justify-center md:items-center bg-[var(--bg)] `}
+      className={`h-[100dvh] flex items-start justify-center md:items-center bg-[var(--bg)] overflow-hidden`}
     >
       <ThemeCard
         isOpened={isOpened}
