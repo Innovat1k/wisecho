@@ -9,17 +9,11 @@ import { AnimatePresence } from "framer-motion";
 function App() {
   const screen = useResponsive();
   const { showDetails, handleShowDetails } = useShowDetails();
-  const { isOpened, toggleThemeCard, changeTheme } = useTheme();
+  const { isModalOpen, toggleThemeCard, themeActions } = useTheme();
 
   return (
-    <div
-      className={`h-[100dvh] flex items-start justify-center md:items-center bg-[var(--bg)] overflow-hidden`}
-    >
-      <ThemeCard
-        isOpened={isOpened}
-        closeTMenu={toggleThemeCard}
-        changeTheme={changeTheme}
-      />
+    <div className="h-[100dvh] flex items-start justify-center md:items-center bg-[var(--bg)] overflow-hidden">
+      <ThemeCard isOpened={isModalOpen} themeActions={themeActions} />
 
       {screen.isMobile ? (
         <>

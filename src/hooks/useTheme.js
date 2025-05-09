@@ -4,37 +4,63 @@ import { useEffect, useState } from "react";
 
 export const useTheme = () => {
   const [theme, setTheme] = useAtom(appTheme);
-  const [themesChange, setThemesChange] = useState({
+  const [themeState, setThemeState] = useState({
     current: "",
-    selected: false,
+    selected: theme,
   });
-  const [isOpened, setIsOpened] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Effect to apply the theme class to the body element
   useEffect(() => {
     document.body.className = theme;
-    console.log(document.body.className);
   }, [theme]);
 
-  // Function to toggle the theme
-  const changeTheme = (newTheme) => {
-    setThemesChange({
-      ...themesChange,
-      current: newTheme,
-      selected: !themesChange.selected,
+  // Function to choose & preview theme
+  const previewTheme = (newTheme) => {
+    setThemeState({
+      ...themeState,
+      current: theme,
+      selected: newTheme,
     });
     setTheme(newTheme);
   };
 
-  // Function to toggle the theme card
+  // Function to open/close the theme card
   const toggleThemeCard = () => {
-    setIsOpened(!isOpened);
+    setIsModalOpen(!isModalOpen);
+  };
+
+  // Function to cancel theme change
+  const cancelThemeChange = (e) => {
+    e.preventDefault();
+    setThemeState({
+      current: themeState.current,
+      selected: "",
+    });
+    setTheme(themeState.current);
+    setIsModalOpen(!isModalOpen);
   };
 
   // Function to apply theme change
-  const applyChanges = (e) => {
+  const applyTheme = (e) => {
     e.preventDefault();
+    setTheme(themeState.selected);
+    setThemeState({
+      current: themeState.selected,
+      selected: "",
+    });
+    setIsModalOpen(!isModalOpen);
+    console.log(theme);
   };
 
-  return { theme, changeTheme, isOpened, toggleThemeCard };
+  return {
+    theme,
+    isModalOpen,
+    toggleThemeCard,
+    themeActions: {
+      applyTheme,
+      cancelThemeChange,
+      previewTheme,
+    },
+  };
 };

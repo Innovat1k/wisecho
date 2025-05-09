@@ -25,22 +25,24 @@ h3 {
   --no-favorites: #aaa;
 
   /* ThemeCard */
-  --themecard-bg: #fff; /* Fond du ThemeCard */
-  --themecard-title: #000; /* Titre du ThemeCard */
-  --themecard-text: #555; /* Texte du ThemeCard */
-  --themecard-close-icon: #ccc; /* Icône de fermeture */
+  --th-bg: #fff; /* Fond du ThemeCard */
+  --th-title: #000; /* Titre du ThemeCard */
+  --th-text: #555; /* Texte du ThemeCard */
+  --th-close-icon: #ccc; /* Icône de fermeture */
 
   /* Boutons Principaux */
-  --btn-primary-bg: #4287f5; /* Bleu ciel */
-  --btn-primary-text: #fff; /* Texte blanc */
-  --btn-primary-hover: #2176ff; /* Bleu plus foncé */
-  --btn-primary-active: #1e40af; /* Bleu très foncé */
+  --btn-primary-bg: #4287f5; /* Couleur par défaut */
+  --btn-primary-text: #ffffff;
+  --btn-primary-text-hover: #ffffff;
+  --btn-primary-bg-hover: #39acef; /* Légèrement plus clair ou plus foncé selon le thème */
+  --btn-primary-active: #1e88e5; /* État actif */
 
   /* Bouton Secondaire (Ajouter aux Favoris) */
-  --btn-secondary-bg: #81c784; /* Vert clair */
-  --btn-secondary-text: #fff; /* Texte blanc */
-  --btn-secondary-hover: #66bb6a; /* Vert moyen */
-  --btn-secondary-active: #43a047; /* Vert foncé */
+  --btn-secondary-bg: #81c784;
+  --btn-secondary-text: #000000;
+  --btn-secondary-text-hover: #000000;
+  --btn-secondary-bg-hover: #6fbf6f;
+  --btn-secondary-active: #43a047;
 
   /* Icônes */
   --icon-primary: #4287f5; /* Couleur principale des icônes */
@@ -79,9 +81,23 @@ body.soft {
   --th-close-icon-hover: #64b5f6; /* Bleu plus intense */
   --th-btn-hover: #bbdefb; /* Bleu pâle */
   --th-btn-active: #64b5f6; /* Bleu actif */
-  
+
+  /* Boutons Principaux */
+  --btn-primary-bg: #4287f5; /* Sky Blue */
+  --btn-primary-text: #ffffff;
+  --btn-primary-text-hover: #ffffff;
+  --btn-primary-bg-hover: #39acef; /* Lighter Blue */
+  --btn-primary-active: #1e8ecf; /* Slightly darker for active state */
+
+  /* Bouton Secondaire */
+  --btn-secondary-bg: #81c784; /* Mint Green */
+  --btn-secondary-text: #000000;
+  --btn-secondary-text-hover: #000000;
+  --btn-secondary-bg-hover: #6fbf6f; /* Lighter Mint Green */
+  --btn-secondary-active: #43a047; /* Forest Green */
 
   /* Hover/Active des Boutons */
+  --btn-bg: #1976d2; /* Bleu foncé */
   --btn-primary-hover: #3578e4; /* Sky Blue */
   --btn-primary-active: #1e90ff; /* Dodger Blue */
   --btn-secondary-hover: #66bb6a; /* Vert moyen */
@@ -127,7 +143,22 @@ body.warm {
   --th-btn-hover: #ffe0b2; /* Beige plus intense */
   --th-btn-active: #fbc02d; /* Doré actif */
 
+  /* Boutons Principaux */
+  --btn-primary-bg: #fbc02d; /* Golden Yellow */
+  --btn-primary-text: #333333;
+  --btn-primary-text-hover: #333333;
+  --btn-primary-bg-hover: #ffd700; /* Bright Yellow */
+  --btn-primary-active: #cc9900; /* Amber Gold */
+
+  /* Bouton Secondaire */
+  --btn-secondary-bg: #ffc7d0; /* Blush Pink */
+  --btn-secondary-text: #ffffff;
+  --btn-secondary-text-hover: #ffffff;
+  --btn-secondary-bg-hover: #ffb3d1; /* Lighter Pink */
+  --btn-secondary-active: #ff5c8d; /* Rose Red */
+
   /* Hover/Active des Boutons */
+  --btn-bg: #f57c00; /* Orange chaud */
   --btn-primary-hover: #fbc02d; /* Golden Yellow */
   --btn-primary-active: #cc9900; /* Amber Gold */
   --btn-secondary-hover: #ff8fa3; /* Rose clair */
@@ -173,7 +204,22 @@ body.modern {
   --th-btn-hover: #c8e6c9; /* Vert clair */
   --th-btn-active: #81c784; /* Vert actif */
 
+  /* Boutons Principaux */
+  --btn-primary-bg: #ff9800; /* Coral Blaze */
+  --btn-primary-text: #ffffff;
+  --btn-primary-text-hover: #ffffff;
+  --btn-primary-bg-hover: #ff8f00; /* Slightly lighter or darker */
+  --btn-primary-active: #e64a19; /* Flame Red */
+
+  /* Bouton Secondaire */
+  --btn-secondary-bg: #abebc6; /* Fresh Mint */
+  --btn-secondary-text: #000000;
+  --btn-secondary-text-hover: #000000;
+  --btn-secondary-bg-hover: #81c784; /* Mint Green */
+  --btn-secondary-active: #4caf50; /* Green */
+
   /* Hover/Active des Boutons */
+  --btn-bg: #0d47a1; /* Bleu profond */
   --btn-primary-hover: #ff9800; /* Coral Blaze */
   --btn-primary-active: #e64a19; /* Deep Flame */
   --btn-secondary-hover: #589270; /* Menthe clair */
