@@ -5,11 +5,15 @@ import { useResponsive } from "./hooks/useResponsive";
 import ThemeCard from "./components/ThemeCard";
 import { useTheme } from "./hooks/useTheme";
 import { AnimatePresence } from "framer-motion";
+import ResponsiveGuard from "./components/ResponsiveGuard";
+import Loader from "./components/Loader";
 
 function App() {
   const screen = useResponsive();
   const { showDetails, handleShowDetails } = useShowDetails();
   const { isModalOpen, toggleThemeCard, themeActions } = useTheme();
+
+  if (!screen.isReady) return <Loader />;
 
   return (
     <div className="h-[100dvh] flex items-start justify-center md:items-center bg-[var(--bg)] overflow-hidden">
@@ -33,10 +37,7 @@ function App() {
           </AnimatePresence>
         </>
       ) : (
-        <>
-          <MainCard />
-          <AppDetails />
-        </>
+        <ResponsiveGuard />
       )}
     </div>
   );

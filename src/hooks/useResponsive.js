@@ -5,13 +5,12 @@ export const useResponsive = () => {
     isMobile: false,
     isTablet: false,
     isDesktop: false,
+    isReady: false,
   });
 
   useEffect(() => {
     const mobileQuery = window.matchMedia("(max-width: 639px)");
-    const tabletQuery = window.matchMedia(
-      "(min-width: 640px) and (max-width: 1023px)"
-    );
+    const tabletQuery = window.matchMedia("(min-width: 640px) and (max-width: 1023px)");
     const desktopQuery = window.matchMedia("(min-width: 1024px)");
 
     const updateScreen = () => {
@@ -19,6 +18,7 @@ export const useResponsive = () => {
         isMobile: mobileQuery.matches,
         isTablet: tabletQuery.matches,
         isDesktop: desktopQuery.matches,
+        isReady: true,
       });
     };
 
