@@ -1,157 +1,152 @@
-# 📘 Adv QuoGen
+# 💼 <Wisecho>
 
-An app to display and manage inspiring quotes.
+> <ONE\*LINER_DESCRIPTION>  
+> A simple quote generator app to demonstrate my web development skills, featuring a live theme preview and a mobile-first design.
 
-> Une phrase concise décrivant le but principal du projet.  
-> Exemple : Une application React.js pour afficher et gérer des citations inspirantes.
+🔗 [Live Demo](https://<PROJECT_SLUG>.netlify.app) &nbsp; | &nbsp; ![GitHub Stars](https://img.shields.io/github/stars/<YOUR_USERNAME>/<REPO_NAME>?style=social)
 
 ---
 
-## 🧭 Table of contents
+## 🧭 Table of Contents
 
 - [📝 Description](#-description)
-- [✨ Features](#-fonctionnalités)
-- [🔧 Technologies Used](#-technologies-utilisées)
-- [📦 Installation](#-installation)
-- [🚀 Usage](#-utilisation)
-- [🗂️ Projet Structure](#-structure-du-projet)
-- [🧱 Next Steps](#-prochaines-étapes)
-- [📸 Screenshoots](#-captures-décran)
+- [✨ Features](#-features)
+- [🔧 Technologies Used](#-technologies-used)
+- [📦 Installation & Usage](#-installation--usage)
+- [🔐 Environment Variables](#-environment-variables)
+- [🗂️ Project Structure](#-project-structure)
+- [🧱 Roadmap](#-roadmap)
+- [📸 Screenshots](#-screenshots)
 - [🤝 Contributions](#-contributions)
-- [📄 Licence](#-licence)
-- [👤 Author](#-auteur)
+- [📄 License](#-license)
+- [👤 Author](#-author)
 
 ---
 
 ## 📝 Description
 
-A minimalist quote generator app with advanced features, to highlight my basic knowledge on fetching datas and api calling.
+<SHORT_PROJECT_DESCRIPTION>  
+Wisecho is a mobile-first quote generator app designed to demonstrate web development skills. The app allows users to generate random quotes, manage favorites, and preview and switch themes for better visual comfort. Currently under development with a mobile-first approach, it will later be adapted for larger screens.
+
+📱 Important: The current version is optimized exclusively for mobile devices.
+Responsive support for tablets and desktops is planned in upcoming releases.
+
+The project follows a mobile-first design approach and is built with scalability and future enhancements in mind.
 
 ---
 
+## 🚫 Mobile-Only Experience
+
+The app is currently optimized for mobile devices only. When accessed on larger screens, a simple message informs users that the app is "mobile-first" and not yet available for desktops/tablets.
+
+````jsx
+{screen.isMobile ? (
+  <>
+    <MainCard />
+    <AppDetails />
+  </>
+) : (
+  <ResponsiveGuard message="Currently mobile-first, not available for larger screens" />
+)}
+
 ## ✨ Features
 
-Checklist of planned and implemented features :
-
 - [x] Generate random quote
-- [x] Change app theme (soft, warm and modern)
+- [x] Preview and change theme
 - [ ] Add and manage quotes to favorites
 - [ ] Generate quote by selected category
-- [ ] Responsive design for larger device screen
 
 ---
 
 ## 🔧 Technologies Used
 
-List of principal technologies and library :
-
-- React.js (with Vite)
-- Tailwind CSS
-- Jotai
-- Fetch API
-- Framer Motion
+- [React.js](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Jotai](https://jotai.org/) – state management
+- [Framer Motion](https://www.framer.com/motion/) – animations
+- [Vite](https://vitejs.dev/) – dev & build tool
+- [React Icons](https://react-icons.github.io/react-icons/) – icons
 
 ---
 
-## 📦 Installation
-
-### 1. Cloner le dépôt
+## 📦 Installation & Usage
 
 ```bash
-git clone https://github.com/votre-utilisateur/nom-du-projet.git
-cd nom-du-projet
-```
+# 1. Clone the repository
+git clone https://github.com/<YOUR_USERNAME>/<REPO_NAME>.git
+cd <REPO_NAME>
 
-### 2. Installer les dépendances
-
-```bash
+# 2. Install dependencies
 npm install
-# ou
-yarn install
-```
 
----
-
-## 🚀 Utilisation
-
-### Lancer en mode développement
-
-```bash
+# 3. Run the app
 npm run dev
-# ou
-yarn dev
+
+# 4. Build for production
+npm run build
+````
+
+---
+
+## 🔐 Environment Variables
+
+If your app uses environment variables, create a `.env` file:
+
+```
+VITE_API_KEY=<your_api_key>
+VITE_BASE_URL=https://api.example.com
 ```
 
-### Construire pour la production
+---
+
+## 🗂️ Project Structure
 
 ```bash
-npm run build
-# ou
-yarn build
-```
-
----
-
-## 🗂️ Structure du projet
-
-```
 src/
-├── components/        # Composants réutilisables
-├── hooks/             # Hooks personnalisés
-├── styles/            # Fichiers de thèmes ou CSS globaux
-├── assets/            # Images, icônes, SVG
-├── App.jsx
-└── main.jsx
+├── atoms/             # Atoms for state management
+├── components/        # Reusable UI components
+├── hooks/             # Custom React hooks
+├── themes/            # Theme variables and settings
+├── utils/             # Utility functions
+├── App.jsx            # Root component
+└── main.jsx           # App entry point
 ```
 
 ---
 
-## 🧱 Next steps
+## 🧱 Roadmap
 
-List of planned tasks or improvements :
-
-- [ ] Add unit tests
-- [ ] Store on localStorage
-- [ ] Support multi-thèmes basé sur l’heure
-
----
-
-## 📸 Captures d’écran
-
-> Ajoutez ici des images ou GIF montrant le rendu ou les fonctionnalités.
+- [ ] Add favorites system for quotes
+- [ ] Get statistics of generated quotes + favorites
+- [ ] Change local quote fetching to distant api
+- [ ] Persist generation statistics and theme to localStorage
+- [ ] Add filtering by tags
+- [ ] Adopt a responsive design for larger screen devices
+- [ ] Refactor folder structure to hybrid feature type module
 
 ---
 
 ## 🤝 Contributions
 
-Les contributions sont les bienvenues !  
-Voici comment contribuer :
+🙅‍♂️ This project does not accept direct contributions (e.g. pull requests) at this time, as it is part of my personal portfolio and learning journey.
 
-1. Fork le projet
-2. Crée une branche (`git checkout -b feature/ma-nouvelle-fonction`)
-3. Commit (`git commit -m "Ajout de ma nouvelle fonction"`)
-4. Push (`git push origin feature/ma-nouvelle-fonction`)
-5. Ouvre une Pull Request
+However, suggestions, ideas, and bug reports are welcome!
 
----
+- Open an issue for feedback or feature requests
+- Leave a comment or start a discussion (if enabled)
+- Reach out through social media or email
 
-## 📄 Licence
-
-Ce projet est sous licence **MIT** – voir le fichier [LICENSE](./LICENSE) pour plus d’informations.
+Thank you for your interest and support!
 
 ---
 
-## 👤 Auteur
+## 📄 License
 
-**Nom ou pseudo** – [@github](https://github.com/votre-utilisateur)
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ---
 
-<!--
-### 🛠️ Instructions de personnalisation (à supprimer une fois le README finalisé)
+## 👤 Author
 
-1. Remplissez toutes les sections avec les détails de votre projet.
-2. Cochez les fonctionnalités terminées.
-3. Supprimez les instructions en commentaire une fois prêtes à publier.
-
--->
+**<YOUR_NAME>** – [@<YOUR_USERNAME>](https://github.com/<YOUR_USERNAME>)  
+Feel free to reach out for collaboration or freelance opportunities.
