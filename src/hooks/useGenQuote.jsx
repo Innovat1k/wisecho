@@ -1,13 +1,13 @@
 import { useAtom } from "jotai";
 import { useFetchQuote } from "./useFetchQuote";
-import { curQuote } from "../atoms/atoms";
+import { currentQuoteAtom } from "../atoms/atoms";
 import { useEffect } from "react";
 import { filterQuote } from "../utils/utils";
 
 // Custom hook to generate quote
 // and manage the state of the current quote
 export const useGenQuote = () => {
-  const [quote, setQuote] = useAtom(curQuote);
+  const [quote, setQuote] = useAtom(currentQuoteAtom);
   const { quotesData, loading, error, fetchQuote } = useFetchQuote();
 
   // Random quote while app loaded

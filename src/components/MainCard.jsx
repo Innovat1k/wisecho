@@ -18,7 +18,7 @@ function MainCard({ openDetails, openThemeMenu }) {
           onClick={openThemeMenu}
           size={25}
         />
-        <h2 className="text-lg text-[var(--title-main)]">Quote Gen</h2>
+        <h2 className="text-lg text-[var(--title-main)]">Wisecho</h2>
         <LuChartBar
           className="cursor-pointer hover:scale-110 duration-200 text-[var(--icon-primary)] hover:text-[var(--icon-hover)]"
           onClick={openDetails}

@@ -1,21 +1,31 @@
 import { LuHeart } from "react-icons/lu";
 import Button from "./Button";
-import { useFavorise } from "../hooks/useFavorise";
+import { useFavoriteQuote } from "../hooks/useFavoriteQuote";
 
 function ActionForm({ newQuote }) {
-  const { addFavorite } = useFavorise();
+  const { addFavorite, favoriteButton } = useFavoriteQuote();
 
   return (
     <form className="grid grid-cols-2 gap-4" onSubmit={newQuote}>
       <Button
-        icon={<LuHeart className="fill-[var(--favorite-icon)]" />}
-        label="Add to favorite"
+        icon={
+          favoriteButton.isInFav ? (
+            <LuHeart className="text-[var(--favorite-icon)] fill-[var(--favorite-icon)]" />
+          ) : (
+            <LuHeart className="text-white" />
+          )
+        }
+        label={favoriteButton.label}
         onClick={addFavorite}
         type="button"
       />
       <>
         {/* <select name="q_category" id=""></select> */}
-        <Button label="New quote" type="submit" />
+        <Button
+          disabled={favoriteButton.isInFav}
+          label="New quote"
+          type="submit"
+        />
       </>
     </form>
   );

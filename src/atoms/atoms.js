@@ -4,10 +4,10 @@ import { atom } from "jotai";
 export const appTheme = atom("modern");
 
 // Atom for current quote
-export const curQuote = atom({});
+export const currentQuoteAtom = atom({});
 
 // Favorite quotes list
-export const favQuotes = atom([]);
+export const favoritesQuotesAtom = atom([]);
 
 // App generation & favorites status
 export const statistic = atom({ generated: 0, saved: 0 });

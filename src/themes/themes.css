@@ -151,7 +151,7 @@ body.warm {
   --btn-primary-active: #cc9900; /* Amber Gold */
 
   /* Bouton Secondaire */
-  --btn-secondary-bg: #ffc7d0; /* Blush Pink */
+  --btn-secondary-bg: #f2a8b4; /* Blush Pink */
   --btn-secondary-text: #ffffff;
   --btn-secondary-text-hover: #ffffff;
   --btn-secondary-bg-hover: #ffb3d1; /* Lighter Pink */
@@ -212,7 +212,7 @@ body.modern {
   --btn-primary-active: #e64a19; /* Flame Red */
 
   /* Bouton Secondaire */
-  --btn-secondary-bg: #abebc6; /* Fresh Mint */
+  --btn-secondary-bg: #89c3a1; /* Fresh Mint */
   --btn-secondary-text: #000000;
   --btn-secondary-text-hover: #000000;
   --btn-secondary-bg-hover: #81c784; /* Mint Green */
