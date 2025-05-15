@@ -50,12 +50,16 @@ The app is currently optimized for mobile devices only. When accessed on larger 
 
 ## ✨ Features
 
+### ✨ **Completed Features**
+
 - [x] Generate random quote
 - [x] Preview and change theme
-- [ ] Add and manage quotes to favorites
-- [ ] Generate quote by selected category
+- [x] Add and manage quotes to favorites
 
----
+### ✨ **Upcoming Features**
+
+- [ ] Generate quote by selected category
+- [ ] Support larger screen devices (tablet & desktop)
 
 ## 🔧 Technologies Used
 
@@ -84,6 +88,7 @@ npm run dev
 # 4. Build for production
 npm run build
 ```
+
 ---
 
 ## 🗂️ Project Structure
@@ -103,14 +108,14 @@ src/
 
 ## 🧱 Roadmap
 
-- [ ] Add favorites system for quotes
-- [ ] Get statistics of generated quotes + favorites
-- [ ] Change local quote fetching to distant api
-- [ ] Persist generation statistics and theme to localStorage
-- [ ] Add filtering by tags
-- [ ] Adopt a responsive design for larger screen devices
-- [ ] Refactor folder structure to hybrid feature type module
-- [ ] Update global styling
+- [x] Add a favorites system for quotes
+- [x] Track statistics for generated and favorited quotes
+- [ ] Switch from local quote fetching to a remote API
+- [ ] Persist theme, stats, quotes and favorites in `localStorage`
+- [ ] Add tag-based quote filtering
+- [ ] Make the app responsive on larger screens
+- [ ] Refactor project structure to a hybrid feature-based module system
+- [ ] Update and improve global styling
 
 ---
 

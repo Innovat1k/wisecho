@@ -1,7 +1,10 @@
 import { LuTrash } from "react-icons/lu";
 import { AnimatePresence, motion } from "framer-motion";
+import { useFavoriteQuote } from "../hooks/useFavoriteQuote";
 
-function FavoriteQuotes({ favQuotes, removeFavorite }) {
+function FavoriteQuotes() {
+  const { favQuotes, removeFavorite } = useFavoriteQuote();
+
   return (
     <div className="h-[70%] bg-[var(--bg)] rounded overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--btn-primary-bg)] scrollbar-track-[var(--container)]">
       <h3 className="mt-4 text-[var(--subtitle)] mb-4">Favorites</h3>

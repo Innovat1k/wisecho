@@ -9,5 +9,5 @@ export const currentQuoteAtom = atom({});
 // Favorite quotes list
 export const favoritesQuotesAtom = atom([]);
 
-// App generation & favorites status
-export const statistic = atom({ generated: 0, saved: 0 });
+// App generation & favorites status : generated starts by 1 with the pre-generated random quote
+export const statisticAtom = atom({ generated: 1, favorite: 0 });
