@@ -1,9 +1,9 @@
 import { useAtom } from "jotai";
-import { appTheme } from "../atoms/atoms";
+import { themeAtom } from "../atoms/atoms";
 import { useEffect, useState } from "react";
 
 export const useTheme = () => {
-  const [theme, setTheme] = useAtom(appTheme);
+  const [theme, setTheme] = useAtom(themeAtom);
   const [themeState, setThemeState] = useState({
     current: "",
     selected: theme,

@@ -28,3 +28,14 @@ export const filterQuote = (elems, category) => {
 export const formatNumber = (number, length = 2, padChar = "0") => {
   return number.toString().padStart(length, padChar);
 };
+
+// Helper pour lire depuis localStorage avec fallback
+export const getLocalStorage = (key, fallback) => {
+  try {
+    const stored = localStorage.getItem(key);
+    return stored ? JSON.parse(stored) : fallback;
+  } catch (e) {
+    console.error("Error while parsing localStorage", e);
+    return fallback;
+  }
+};

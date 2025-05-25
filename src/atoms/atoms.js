@@ -1,13 +1,19 @@
 import { atom } from "jotai";
+import { getLocalStorage } from "../utils/utils";
+
+// Load persisted data
+const persistedData = getLocalStorage("genQuote", {});
 
 // Atom for current theme
-export const appTheme = atom("modern");
+export const themeAtom = atom(persistedData.theme ?? "modern");
 
 // Atom for current quote
-export const currentQuoteAtom = atom({});
+export const quoteAtom = atom(persistedData.currentQuote ?? {});
 
 // Favorite quotes list
-export const favoritesQuotesAtom = atom([]);
+export const favoriteQuotesAtom = atom(persistedData.favorite ?? []);
 
 // App generation & favorites status : generated starts by 1 with the pre-generated random quote
-export const statisticAtom = atom({ generated: 1, favorite: 0 });
+export const statisticAtom = atom(
+  persistedData.statistic ?? { generatedCount: 1, favoritesCount: 0 }
+);

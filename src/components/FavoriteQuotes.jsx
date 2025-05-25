@@ -21,10 +21,10 @@ function FavoriteQuotes() {
                   bounce: 0,
                   opacity: { duration: 0.2 },
                 }}
-                className="flex justify-between gap-6 items-center py-2 px-4 shadow hover:shadow-lg rounded"
+                className="flex justify-between gap-6 items-center py-2 px-4 shadow hover:shadow-lg rounded overflow-ellipsis"
                 key={id}
               >
-                <div className="text-left w-11/12">{quote.text}</div>
+                <div className="text-left w-11/12">{quote.body}</div>
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   whileHover={{ scale: 1.1 }}

@@ -1,9 +1,12 @@
-import { LuChevronRight } from "react-icons/lu";
+import { LuChevronRight, LuRefreshCcwDot, LuRefreshCw } from "react-icons/lu";
 import { motion } from "framer-motion";
 import FavoriteQuotes from "./FavoriteQuotes";
 import QuoteStatistic from "./QuoteStatistic";
+import { usePersistStorage } from "../hooks/usePersistStorage";
 
 function AppDetails({ closeDetails }) {
+  const { resetAppState } = usePersistStorage();
+
   return (
     <motion.div
       initial={{ x: 150, opacity: 0 }}
@@ -28,6 +31,11 @@ function AppDetails({ closeDetails }) {
         <h2 className="font-bold w-11/12 text-lg text-[var(--title-main)]">
           App Details
         </h2>
+        <LuRefreshCw
+          className="cursor-pointer hover:scale-110 duration-200 ease-in"
+          onClick={resetAppState}
+          size={25}
+        />
       </div>
 
       <QuoteStatistic />

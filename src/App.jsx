@@ -7,11 +7,13 @@ import { useTheme } from "./hooks/useTheme";
 import { AnimatePresence } from "framer-motion";
 import ResponsiveGuard from "./components/ResponsiveGuard";
 import Loader from "./components/Loader";
+import { usePersistStorage } from "./hooks/usePersistStorage";
 
 function App() {
   const screen = useResponsive();
   const { showDetails, handleShowDetails } = useShowDetails();
   const { isModalOpen, toggleThemeCard, themeActions } = useTheme();
+  usePersistStorage();
 
   if (!screen.isReady) return <Loader />;
 

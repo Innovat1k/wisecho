@@ -1,10 +1,11 @@
-import { LuChartBar, LuPalette } from "react-icons/lu";
+import { LuChartBar, LuNetwork, LuPalette, LuWifiOff } from "react-icons/lu";
 import ActionForm from "./ActionForm";
-import { useGenQuote } from "../hooks/useGenQuote";
 import { motion } from "framer-motion";
+import Loader from "./Loader";
+import { useQuoteManager } from "../hooks/useQuoteManager";
 
 function MainCard({ openDetails, openThemeMenu }) {
-  const { quote, handleNewQuote, status } = useGenQuote();
+  const { quote, generateQuote, status } = useQuoteManager();
 
   return (
     <motion.div
@@ -28,25 +29,43 @@ function MainCard({ openDetails, openThemeMenu }) {
 
       <div className="text-center">
         <>
-          {status.loading ? (
-            <p className="my-8 italic text-zinc-600">Loading...</p>
-          ) : status.error ? (
-            <p>{status.error}</p>
+          {status.isLoading ? (
+            <Loader />
+          ) : status.hasError ? (
+            <div className="my-20 flex flex-col items-center gap-2">
+              <LuWifiOff size={20} />
+              <p className="text-[var(--text-secondary)]">
+                Please verify your internet connection.
+              </p>
+            </div>
           ) : (
-            <p className="text-2xl text-[var(--text-primary)] mb-6 leading-relaxed">
-              “ {quote.text} ”
-            </p>
+            <>
+              <p className="text-2xl text-[var(--text-primary)] mb-6 leading-relaxed">
+                “ {quote.body} ”
+              </p>
+
+              <div className="mb-14 flex flex-col gap-2">
+                <div className="flex justify-around items-center">
+                  {quote.tags &&
+                    quote.tags.map((tag, index) => (
+                      <span
+                        className="text-sm text-gray-400 capitalize"
+                        key={index}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                </div>
+
+                <span className="text-sm italic text-[var(--text-secondary)]">
+                  {quote.author}
+                </span>
+              </div>
+            </>
           )}
         </>
 
-        <div className="flex justify-around items-center mb-14">
-          <span className="text-sm text-gray-400">{quote.theme}</span>
-          <span className="text-sm italic text-[var(--text-secondary)]">
-            {quote.author}
-          </span>
-        </div>
-
-        <ActionForm newQuote={handleNewQuote} />
+        <ActionForm newQuote={generateQuote} />
       </div>
     </motion.div>
   );

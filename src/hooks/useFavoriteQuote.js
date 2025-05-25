@@ -1,14 +1,10 @@
 import { useAtom, useAtomValue } from "jotai";
-import {
-  currentQuoteAtom,
-  favoritesQuotesAtom,
-  statisticAtom,
-} from "../atoms/atoms";
+import { favoriteQuotesAtom, quoteAtom, statisticAtom } from "../atoms/atoms";
 import { useEffect, useState } from "react";
 
 export const useFavoriteQuote = () => {
-  const current = useAtomValue(currentQuoteAtom);
-  const [favQuotes, setFavQuotes] = useAtom(favoritesQuotesAtom);
+  const current = useAtomValue(quoteAtom);
+  const [favQuotes, setFavQuotes] = useAtom(favoriteQuotesAtom);
   const [statistic, setStatistic] = useAtom(statisticAtom);
   const [favoriteButton, setFavoriteButton] = useState({
     isInFav: false,
@@ -23,7 +19,7 @@ export const useFavoriteQuote = () => {
   const addFavorite = () => {
     if (isAlreadyFavorite()) return;
     setFavQuotes((prev) => [...prev, current]);
-    setStatistic((prev) => ({ ...prev, favorite: prev.favorite + 1 }));
+    setStatistic((prev) => ({ ...prev, favoritesCount: prev.favoritesCount + 1 }));
   };
 
   // Update the button state (label + status) when favorites or current quote change
@@ -44,7 +40,7 @@ export const useFavoriteQuote = () => {
     const itemsCopy = [...favQuotes];
     const res = itemsCopy.filter((item) => item.id !== quote?.id);
     setFavQuotes(res);
-    setStatistic((prev) => ({ ...prev, favorite: prev.favorite - 1 }));
+    setStatistic((prev) => ({ ...prev, favoritesCount: prev.favoritesCount - 1 }));
   };
 
   return { favQuotes, addFavorite, removeFavorite, favoriteButton };

@@ -102,6 +102,7 @@ src/
 ├── utils/             # Utility functions
 ├── App.jsx            # Root component
 └── main.jsx           # App entry point
+└── server.js          # Backend server
 ```
 
 ---
@@ -110,8 +111,8 @@ src/
 
 - [x] Add a favorites system for quotes
 - [x] Track statistics for generated and favorited quotes
-- [ ] Switch from local quote fetching to a remote API
-- [ ] Persist theme, stats, quotes and favorites in `localStorage`
+- [x] Switch from local quote fetching to a remote API
+- [x] Persist theme, stats, quotes and favorites in `localStorage`
 - [ ] Add tag-based quote filtering
 - [ ] Make the app responsive on larger screens
 - [ ] Refactor project structure to a hybrid feature-based module system

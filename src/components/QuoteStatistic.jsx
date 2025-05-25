@@ -3,7 +3,7 @@ import { statisticAtom } from "../atoms/atoms";
 import { formatNumber } from "../utils/utils";
 
 function QuoteStatistic() {
-  const { generated, favorite } = useAtomValue(statisticAtom);
+  const { generatedCount, favoritesCount } = useAtomValue(statisticAtom);
 
   return (
     <div className="flex justify-evenly gap-2 mb-6">
@@ -12,7 +12,7 @@ function QuoteStatistic() {
           Generated quotes
         </h3>
         <p className="text-[var(--stat-number-text)]">
-          {formatNumber(generated)}
+          {formatNumber(generatedCount)}
         </p>
       </div>
       <div className="bg-[var(--th-btn-hover)] p-1 w-1/2 rounded">
@@ -24,7 +24,7 @@ function QuoteStatistic() {
           className="text-[var(--stat-number-text)]"
           initial={{ opacity: 0, y: 20 }}
         >
-          {formatNumber(favorite)}
+          {formatNumber(favoritesCount)}
         </p>
       </div>
     </div>
