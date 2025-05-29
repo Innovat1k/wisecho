@@ -32,12 +32,11 @@ export const usePersistStorage = () => {
     }
   }, [theme, quote, favorite, statistic]);
 
-  // Reset saved data
+  // Reset loacalStorage saved data except current quote to prevent empty quote & refetch
   const resetAppState = () => {
     setTheme("modern");
-    setQuote({});
     setFavorite([]);
-    setStatistic({ generatedCount: 1, favoritesCount: 0 });
+    setStatistic({ generatedCount: 0, favoritesCount: 0 });
 
     localStorage.removeItem("genQuote");
   };

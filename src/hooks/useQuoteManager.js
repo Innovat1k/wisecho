@@ -50,6 +50,10 @@ export const useQuoteManager = () => {
       const data = await fetchQuote(tagOption);
       if (data) {
         setQuote(data);
+        setStatistic((prev) => ({
+          ...prev,
+          generatedCount: prev.generatedCount + 1,
+        }));
       }
     };
     init();

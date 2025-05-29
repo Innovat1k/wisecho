@@ -11,7 +11,7 @@ function MainCard({ openDetails, openThemeMenu }) {
     <motion.div
       initial={{ x: 50 }}
       animate={{ x: 0, transition: { type: "tween", duration: 0.1 } }}
-      className="w-[85%] mt-12 p-4 bg-[var(--container-bg)] rounded-lg shadow-2xl"
+      className="w-[85%] sm:w-[50%] md:w-[40%] mt-12 p-4 bg-[var(--container-bg)] rounded-lg shadow-2xl"
     >
       <div className="flex justify-between items-center mb-10">
         <LuPalette
@@ -19,9 +19,11 @@ function MainCard({ openDetails, openThemeMenu }) {
           onClick={openThemeMenu}
           size={25}
         />
-        <h2 className="text-lg text-[var(--title-main)]">Wisecho</h2>
+        <h2 className="text-lg text-[var(--title-main)] sm:text-center sm:w-11/12">
+          Wisecho
+        </h2>
         <LuChartBar
-          className="cursor-pointer hover:scale-110 duration-200 text-[var(--icon-primary)] hover:text-[var(--icon-hover)]"
+          className="cursor-pointer hover:scale-110 duration-200 text-[var(--icon-primary)] hover:text-[var(--icon-hover)] sm:hidden"
           onClick={openDetails}
           size={25}
         />
@@ -35,12 +37,12 @@ function MainCard({ openDetails, openThemeMenu }) {
             <div className="my-20 flex flex-col items-center gap-2">
               <LuWifiOff size={20} />
               <p className="text-[var(--text-secondary)]">
-                Please verify your internet connection.
+                Please refresh api server error.
               </p>
             </div>
           ) : (
             <>
-              <p className="text-2xl text-[var(--text-primary)] mb-6 leading-relaxed">
+              <p className="text-2xl md:text-xl text-[var(--text-primary)] mb-6 leading-relaxed">
                 “ {quote.body} ”
               </p>
 

@@ -7,7 +7,7 @@ function ActionForm({ newQuote, changeTag }) {
   const { addFavorite, favoriteButton } = useFavoriteQuote();
 
   return (
-    <form className="grid grid-cols-2. gap-4" onSubmit={newQuote}>
+    <form className="grid md:flex md:justify-between md:items-center md:px-6 gap-4" onSubmit={newQuote}>
       <Button
         icon={
           favoriteButton.isInFav ? (
@@ -20,7 +20,7 @@ function ActionForm({ newQuote, changeTag }) {
         onClick={addFavorite}
         type="button"
       />
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 md:w-1/2">
         <select
           className="capitalize hover:cursor-pointer text-center text-[var(--text-secondary)] shadow hover:shadow-lg duration-300"
           name="quote_tag"

@@ -20,11 +20,11 @@ function AppDetails({ closeDetails }) {
         opacity: 0,
         transition: { type: "tween", duration: 0.1 },
       }}
-      className="w-[90%] h-[80vh] max-h-[80vh] mt-12 p-4 bg-[var(--container-bg)] rounded-lg text-center overflow-hidden shadow-2xl"
+      className="w-[90%] sm:w-[45%] md:w-[40%] h-[80vh] max-h-[80vh] mt-12 p-4 bg-[var(--container-bg)] rounded-lg text-center overflow-hidden shadow-2xl"
     >
       <div className="flex justify-between items-center mb-5">
         <LuChevronRight
-          className="cursor-pointer hover:scale-110 duration-200 ease-in"
+          className="cursor-pointer hover:scale-110 duration-200 ease-in sm:hidden"
           onClick={closeDetails}
           size={25}
         />

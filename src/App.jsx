@@ -18,7 +18,7 @@ function App() {
   if (!screen.isReady) return <Loader />;
 
   return (
-    <div className="h-[100dvh] flex items-start justify-center md:items-center bg-[var(--bg)] overflow-hidden">
+    <div className="h-[100dvh] flex items-start justify-center sm:justify-between md:items-start sm:p-3 lg:p-6 bg-[var(--bg)] overflow-hidden">
       <ThemeCard isOpened={isModalOpen} themeActions={themeActions} />
 
       {screen.isMobile ? (
@@ -39,8 +39,31 @@ function App() {
           </AnimatePresence>
         </>
       ) : (
-        <ResponsiveGuard />
+        <>
+          <MainCard openThemeMenu={toggleThemeCard} /> <AppDetails />
+        </>
       )}
+
+      {/* {screen.isMobile ? (
+        <>
+          <AnimatePresence mode="wait">
+            {!showDetails ? (
+              <MainCard
+                key={"main-card"}
+                openDetails={handleShowDetails}
+                openThemeMenu={toggleThemeCard}
+              />
+            ) : (
+              <AppDetails
+                key={"app-details"}
+                closeDetails={handleShowDetails}
+              />
+            )}
+          </AnimatePresence>
+        </>
+      ) : (
+        <ResponsiveGuard />
+      )} */}
     </div>
   );
 }

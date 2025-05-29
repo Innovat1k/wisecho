@@ -15,7 +15,7 @@ export const favoriteQuotesAtom = atom(persistedData.favorite ?? []);
 
 // App generation & favorites status : generated starts by 1 with the pre-generated random quote
 export const statisticAtom = atom(
-  persistedData.statistic ?? { generatedCount: 1, favoritesCount: 0 }
+  persistedData.statistic ?? { generatedCount: 0, favoritesCount: 0 }
 );
 
 // Atom for selected tag for fetching

@@ -1,6 +1,6 @@
 # 💼 <Wisecho>
 
-A simple quote generator app to demonstrate my web development skills, featuring a live theme preview and a mobile-first design.
+A simple and fully responsive quote generator app to demonstrate my web development skills, featuring theme preview, tag-based filtering, favorites management, and real-time statistics.
 
 ---
 
@@ -19,47 +19,25 @@ A simple quote generator app to demonstrate my web development skills, featuring
 
 ## 📝 Description
 
-Wisecho is a mobile-first quote generator app designed to demonstrate web development skills. The app allows users to generate random quotes, manage favorites, and preview and switch themes for better visual comfort. Currently under development with a mobile-first approach, it will later be adapted for larger screens.
+Wisecho is a modern, responsive quote generator app built using React.js and styled with Tailwind CSS. It allows users to:
 
-📱 Important: The current version is optimized exclusively for mobile devices.
-Responsive support for tablets and desktops is planned in upcoming releases.
-
-🗂️ **Note**: For now, quotes are fetched from a local `quotes.json` file located in the `public/` directory.  
-Integration with a remote API is planned in a future update.
-
-The project follows a mobile-first design approach and is built with scalability and future enhancements in mind.
-
----
-
-## 🚫 Mobile-Only Experience
-
-The app is currently optimized for mobile devices only. When accessed on larger screens, a simple message informs users that the app is "mobile-first" and not yet available for desktops/tablets.
-
-```jsx
-{
-  screen.isMobile ? (
-    <>
-      <MainCard />
-      <AppDetails />
-    </>
-  ) : (
-    <ResponsiveGuard message="Currently mobile-first, not available for larger screens" />
-  );
-}
-```
+Generate random or filtered quotes by tag.
+Preview and switch between multiple themes for better visual comfort.
+Add and manage favorite quotes.
+View real-time statistics on generated and favorited quotes.
+The project follows a mobile-first approach but has been adapted to be fully responsive across all screen sizes — from mobile to desktop.
+It uses a modular architecture and is built with scalability, performance, and user experience in mind.
 
 ## ✨ Features
 
-### ✨ **Completed Features**
+Wisecho currently supports the following user-facing features:
 
-- [x] Generate random or filtered quote by tag
-- [x] Preview and change theme
-- [x] Add and manage quotes to favorites
-
-### ✨ **Upcoming Features**
-
-- [ ] Generate quote by selected category
-- [ ] Support larger screen devices (tablet & desktop)
+✅ Random quote generation  
+✅ Filter quotes by tag  
+✅ Preview and switch between multiple themes  
+✅ Manage favorite quotes (add/remove)  
+✅ Display real-time statistics  
+✅ Fully responsive UI (mobile, tablet, desktop)
 
 ## 🔧 Technologies Used
 
@@ -114,9 +92,10 @@ src/
 - [x] Switch from local quote fetching to a remote API
 - [x] Persist theme, stats, quotes and favorites in `localStorage`
 - [x] Add tag-based quote filtering
-- [ ] Make the app responsive on larger screens
+- [x] Make the app responsive on larger screens
 - [ ] Refactor project structure to a hybrid feature-based module system
 - [ ] Update and improve global styling
+- [ ] Implement full test suite for components, hooks and features
 
 ---
 
