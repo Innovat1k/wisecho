@@ -1,5 +1,5 @@
 import { LuX } from "react-icons/lu";
-import Button from "./Button";
+import Button from "../../../shared/components/Button";
 import { AnimatePresence, motion } from "framer-motion";
 
 function ThemeCard({ isOpened, themeActions }) {

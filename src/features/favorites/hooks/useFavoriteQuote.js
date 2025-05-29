@@ -1,5 +1,5 @@
 import { useAtom, useAtomValue } from "jotai";
-import { favoriteQuotesAtom, quoteAtom, statisticAtom } from "../atoms/atoms";
+import { favoriteQuotesAtom, quoteAtom, statisticAtom } from "../../../shared/atoms/atoms";
 import { useEffect, useState } from "react";
 
 export const useFavoriteQuote = () => {

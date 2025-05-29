@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import { themeAtom } from "../atoms/atoms";
+import { themeAtom } from "../../../shared/atoms/atoms";
 import { useEffect, useState } from "react";
 
 export const useTheme = () => {
@@ -8,7 +8,7 @@ export const useTheme = () => {
     current: "",
     selected: theme,
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isThemeCardOpen, setIsThemeCardOpen] = useState(false);
 
   // Effect to apply the theme class to the body element
   useEffect(() => {
@@ -27,7 +27,7 @@ export const useTheme = () => {
 
   // Function to open/close the theme card
   const toggleThemeCard = () => {
-    setIsModalOpen(!isModalOpen);
+    setIsThemeCardOpen(!isThemeCardOpen);
   };
 
   // Function to cancel theme change
@@ -38,7 +38,7 @@ export const useTheme = () => {
       selected: "",
     });
     setTheme(themeState.current);
-    setIsModalOpen(!isModalOpen);
+    setIsThemeCardOpen(!isThemeCardOpen);
   };
 
   // Function to apply theme change
@@ -49,13 +49,13 @@ export const useTheme = () => {
       current: themeState.selected,
       selected: "",
     });
-    setIsModalOpen(!isModalOpen);
+    setIsThemeCardOpen(!isThemeCardOpen);
     console.log(theme);
   };
 
   return {
     theme,
-    isModalOpen,
+    isThemeCardOpen,
     toggleThemeCard,
     themeActions: {
       applyTheme,

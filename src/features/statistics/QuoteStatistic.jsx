@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
-import { statisticAtom } from "../atoms/atoms";
-import { formatNumber } from "../utils/utils";
+import { statisticAtom } from "../../shared/atoms/atoms";
+import { formatNumber } from "../../shared/utils/utils";
 
 function QuoteStatistic() {
   const { generatedCount, favoritesCount } = useAtomValue(statisticAtom);

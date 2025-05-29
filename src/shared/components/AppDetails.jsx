@@ -1,7 +1,7 @@
 import { LuChevronRight, LuRefreshCcwDot, LuRefreshCw } from "react-icons/lu";
 import { motion } from "framer-motion";
-import FavoriteQuotes from "./FavoriteQuotes";
-import QuoteStatistic from "./QuoteStatistic";
+import FavoriteQuotes from "../../features/favorites/components/FavoriteQuotes";
+import QuoteStatistic from "../../features/statistics/QuoteStatistic";
 import { usePersistStorage } from "../hooks/usePersistStorage";
 
 function AppDetails({ closeDetails }) {

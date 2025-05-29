@@ -73,14 +73,23 @@ npm run build
 
 ```bash
 src/
-├── atoms/             # Atoms for state management
-├── components/        # Reusable UI components
-├── hooks/             # Custom React hooks
-├── themes/            # Theme variables and settings
-├── utils/             # Utility functions
-├── App.jsx            # Root component
-└── main.jsx           # App entry point
-└── server.js          # Backend server
+├── features/                  # Domain-specific features (e.g., ThemeCard)
+│   ├── components/            # UI components specific to a feature
+│   ├── hooks/                 # Feature-specific logic and behavior
+│   └── ...                    # Additional logic
+│
+├── shared/                   # Generic UI and reusable logic
+│   ├── components/            # Common components (e.g., layout, loaders)
+│   ├── hooks/                 # Shared custom hooks used across features
+│
+├── themes/                   # Theme styles and configuration (CSS variables, logic)
+├── atoms/                    # Global state management using Jotai
+├── utils/                    # Utility functions and helpers
+│
+├── App.jsx                   # Root component: sets up the layout and logic
+├── main.jsx                  # App entry point (ReactDOM rendering)
+└── server.js                 # Lightweight backend proxy (handles CORS for API calls)
+
 ```
 
 ---
@@ -93,7 +102,7 @@ src/
 - [x] Persist theme, stats, quotes and favorites in `localStorage`
 - [x] Add tag-based quote filtering
 - [x] Make the app responsive on larger screens
-- [ ] Refactor project structure to a hybrid feature-based module system
+- [x] Refactor project structure to a hybrid feature-based module system
 - [ ] Update and improve global styling
 - [ ] Implement full test suite for components, hooks and features
 

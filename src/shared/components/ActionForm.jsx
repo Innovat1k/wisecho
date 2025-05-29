@@ -1,13 +1,16 @@
 import { LuHeart } from "react-icons/lu";
 import Button from "./Button";
-import { useFavoriteQuote } from "../hooks/useFavoriteQuote";
+import { useFavoriteQuote } from "../../features/favorites/hooks/useFavoriteQuote";
 import { primaryTags } from "../utils/utils";
 
 function ActionForm({ newQuote, changeTag }) {
   const { addFavorite, favoriteButton } = useFavoriteQuote();
 
   return (
-    <form className="grid md:flex md:justify-between md:items-center md:px-6 gap-4" onSubmit={newQuote}>
+    <form
+      className="grid md:flex md:justify-between md:items-center md:px-6 gap-4"
+      onSubmit={newQuote}
+    >
       <Button
         icon={
           favoriteButton.isInFav ? (
