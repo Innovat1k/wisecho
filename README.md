@@ -52,7 +52,7 @@ The app is currently optimized for mobile devices only. When accessed on larger 
 
 ### ✨ **Completed Features**
 
-- [x] Generate random quote
+- [x] Generate random or filtered quote by tag
 - [x] Preview and change theme
 - [x] Add and manage quotes to favorites
 
@@ -113,7 +113,7 @@ src/
 - [x] Track statistics for generated and favorited quotes
 - [x] Switch from local quote fetching to a remote API
 - [x] Persist theme, stats, quotes and favorites in `localStorage`
-- [ ] Add tag-based quote filtering
+- [x] Add tag-based quote filtering
 - [ ] Make the app responsive on larger screens
 - [ ] Refactor project structure to a hybrid feature-based module system
 - [ ] Update and improve global styling

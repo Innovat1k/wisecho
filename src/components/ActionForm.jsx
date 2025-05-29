@@ -1,12 +1,13 @@
 import { LuHeart } from "react-icons/lu";
 import Button from "./Button";
 import { useFavoriteQuote } from "../hooks/useFavoriteQuote";
+import { primaryTags } from "../utils/utils";
 
-function ActionForm({ newQuote }) {
+function ActionForm({ newQuote, changeTag }) {
   const { addFavorite, favoriteButton } = useFavoriteQuote();
 
   return (
-    <form className="grid grid-cols-2 gap-4" onSubmit={newQuote}>
+    <form className="grid grid-cols-2. gap-4" onSubmit={newQuote}>
       <Button
         icon={
           favoriteButton.isInFav ? (
@@ -19,14 +20,25 @@ function ActionForm({ newQuote }) {
         onClick={addFavorite}
         type="button"
       />
-      <>
-        {/* <select name="q_category" id=""></select> */}
+      <div className="grid grid-cols-2 gap-4">
+        <select
+          className="capitalize hover:cursor-pointer text-center text-[var(--text-secondary)] shadow hover:shadow-lg duration-300"
+          name="quote_tag"
+          id=""
+          onChange={(e) => changeTag(e)}
+        >
+          {primaryTags.map((tag) => (
+            <option className="bg-[var(--container-bg)]" key={tag}>
+              {tag}
+            </option>
+          ))}
+        </select>
         <Button
           disabled={favoriteButton.isInFav}
           label="New quote"
           type="submit"
         />
-      </>
+      </div>
     </form>
   );
 }

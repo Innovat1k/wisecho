@@ -4,14 +4,15 @@
  * Features:
  * - Loads a quote on component mount
  * - Prevents unnecessary refetch if quote is already loaded
- * - Handles user action to generate a new quote
+ * - Handles user action to generate a new quote (random or filtered)
  * - Updates statistics accordingly
  */
 
 import { useAtom } from "jotai";
 import { useQuoteFetcher } from "./useQuoteFetcher";
-import { quoteAtom, statisticAtom } from "../atoms/atoms";
+import { quoteAtom, statisticAtom, tagAtom } from "../atoms/atoms";
 import { useEffect, useRef } from "react";
+import { filterQuote, randomNum } from "../utils/utils";
 
 export const useQuoteManager = () => {
   // Global state for current quote
@@ -25,6 +26,9 @@ export const useQuoteManager = () => {
 
   // Ref to prevent double fetch (especially in React 18 StrictMode)
   const hasFetched = useRef(false);
+
+  // State for current tag selection
+  const [tagOption, setTagOption] = useAtom(tagAtom);
 
   /**
    * Load initial quote on component mount
@@ -43,7 +47,7 @@ export const useQuoteManager = () => {
     hasFetched.current = true;
 
     const init = async () => {
-      const data = await fetchQuote();
+      const data = await fetchQuote(tagOption);
       if (data) {
         setQuote(data);
       }
@@ -51,15 +55,25 @@ export const useQuoteManager = () => {
     init();
   }, []);
 
+  // Change tag option to filte quote generation
+  const changeTag = (e) => {
+    setTagOption(e.target.value);
+  };
+
   /**
    * Generates a new quote when triggered by user (button click)
    * @param e - Optional event object (e.g., form submission)
    */
   const generateQuote = async (e) => {
     e.preventDefault();
-    const data = await fetchQuote();
+    const data =
+      tagOption === "random" ? await fetchQuote() : await fetchQuote(tagOption);
     if (data) {
-      setQuote(data);
+      const tempQuote = data.quotes;
+      tagOption === "random"
+        ? setQuote(data)
+        : setQuote(tempQuote[randomNum(tempQuote)]);
+
       setStatistic((prev) => ({
         ...prev,
         generatedCount: prev.generatedCount + 1,
@@ -75,5 +89,5 @@ export const useQuoteManager = () => {
    * - isLoading: boolean indicating loading state
    */
 
-  return { quote, generateQuote, status: { isLoading, hasError } };
+  return { quote, generateQuote, status: { isLoading, hasError }, changeTag };
 };

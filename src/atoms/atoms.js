@@ -17,3 +17,6 @@ export const favoriteQuotesAtom = atom(persistedData.favorite ?? []);
 export const statisticAtom = atom(
   persistedData.statistic ?? { generatedCount: 1, favoritesCount: 0 }
 );
+
+// Atom for selected tag for fetching
+export const tagAtom = atom("random");

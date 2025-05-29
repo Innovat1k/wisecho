@@ -5,7 +5,7 @@ import Loader from "./Loader";
 import { useQuoteManager } from "../hooks/useQuoteManager";
 
 function MainCard({ openDetails, openThemeMenu }) {
-  const { quote, generateQuote, status } = useQuoteManager();
+  const { quote, generateQuote, status, changeTag } = useQuoteManager();
 
   return (
     <motion.div
@@ -65,7 +65,7 @@ function MainCard({ openDetails, openThemeMenu }) {
           )}
         </>
 
-        <ActionForm newQuote={generateQuote} />
+        <ActionForm newQuote={generateQuote} changeTag={changeTag} />
       </div>
     </motion.div>
   );
