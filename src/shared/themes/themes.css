@@ -9,235 +9,260 @@ h3 {
   font-weight: 700;
 }
 
-/* Variables Globales */
-:root {
-  /* Base */
-  --bg: #fff; /* Fond principal */
-  --container-bg: #f9f9f9; /* Fond du conteneur */
-  --text-primary: #000; /* Texte principal */
-  --text-secondary: #666; /* Texte secondaire */
-
-  /* Titres */
-  --title-main: #222; /* Titre principal */
-  --subtitle: #888; /* Sous-titre */
-
-  /* Texte d'absence de favoris */
-  --no-favorites: #aaa;
-
-  /* ThemeCard */
-  --th-bg: #fff; /* Fond du ThemeCard */
-  --th-title: #000; /* Titre du ThemeCard */
-  --th-text: #555; /* Texte du ThemeCard */
-  --th-close-icon: #ccc; /* Icône de fermeture */
-
-  /* Boutons Principaux */
-  --btn-primary-bg: #4287f5; /* Couleur par défaut */
-  --btn-primary-text: #ffffff;
-  --btn-primary-text-hover: #ffffff;
-  --btn-primary-bg-hover: #39acef; /* Légèrement plus clair ou plus foncé selon le thème */
-  --btn-primary-active: #1e88e5; /* État actif */
-
-  /* Bouton Secondaire (Ajouter aux Favoris) */
-  --btn-secondary-bg: #81c784;
-  --btn-secondary-text: #000000;
-  --btn-secondary-text-hover: #000000;
-  --btn-secondary-bg-hover: #6fbf6f;
-  --btn-secondary-active: #43a047;
-
-  /* Icônes */
-  --icon-primary: #4287f5; /* Couleur principale des icônes */
-  --icon-hover: #2176ff; /* Hover des icônes */
-  --favorite-icon: #e91e63; /* Rose vif */
-  --favorite-icon-hover: #d81b60; /* Rose foncé */
-
-  /* Statistiques */
-  --stats-bg: #fff; /* Fond des blocs statistiques */
-  --stats-text: #333; /* Texte des statistiques */
-
-  /* Blocs Statistiques */
-  --stat-block-shadow: rgba(0, 0, 0, 0.05); /* Ombre légère */
-  --stat-number-text: #3b82f6; /* Couleur par défaut des nombres */
-}
-
-/* Thème Soft & Apaisant */
 body.soft {
   /* Base */
-  --bg: #f9f9f9; /* Soft White */
-  --container-bg: #f0f0f0; /* Mist Gray */
-  --text-primary: #333333; /* Deep Charcoal */
-  --text-secondary: #4a4a4a; /* Slate Gray */
+  --bg: #f7f9fb;
+  --container-bg: #ffffff;
+  --text-primary: #2e2e2e;
+  --text-secondary: #606770;
+  --loader-accent: #7e57c2;
 
-  /* Titres */
-  --title-main: #2d2d2d; /* Darker Charcoal */
-  --subtitle: #6b7280; /* Gray Blue */
+  /* Titles */
+  --title-primary: #2c3e50;
+  --title-secondary: #6b7280;
+  --title-theme-card: #36454f;
+  --text-theme-card: #4a4a4a;
 
-  /* Texte d'absence de favoris */
-  --no-favorites: #888888; /* Medium Gray */
+  /* No favorites text */
+  --no-favorites-text: #888888;
 
   /* ThemeCard */
-  --th-bg: #ffffff;
-  --th-title: #2d2d2d;
-  --th-text: #4a4a4a;
-  --th-close-icon-hover: #64b5f6; /* Bleu plus intense */
-  --th-btn-hover: #bbdefb; /* Bleu pâle */
-  --th-btn-active: #64b5f6; /* Bleu actif */
+  --bg-theme-card: #e9f1f8;
+  --btn-bg-theme-card: #dbe9f4;
+  --btn-bg-hover-theme-card: #a9c8e6;
+  --btn-text-theme-card: #2c3e50;
+  --btn-text-hover-theme-card: #f7f9fb;
+  --btn-active-bg-theme-card: #2c3e50;
+  --btn-active-text-theme-card: #f7f9fb;
 
-  /* Boutons Principaux */
-  --btn-primary-bg: #4287f5; /* Sky Blue */
+  /* Primary buttons */
+  --btn-primary-bg: #2c3e50;
+  --btn-primary-bg-hover: #1f2d3a;
+  --btn-primary-bg-active: #16222b;
   --btn-primary-text: #ffffff;
-  --btn-primary-text-hover: #ffffff;
-  --btn-primary-bg-hover: #39acef; /* Lighter Blue */
-  --btn-primary-active: #1e8ecf; /* Slightly darker for active state */
+  --btn-primary-text-hover: #f2f2f2;
+  --btn-primary-text-active: #e0e0e0;
 
-  /* Bouton Secondaire */
-  --btn-secondary-bg: #81c784; /* Mint Green */
-  --btn-secondary-text: #000000;
-  --btn-secondary-text-hover: #000000;
-  --btn-secondary-bg-hover: #6fbf6f; /* Lighter Mint Green */
-  --btn-secondary-active: #43a047; /* Forest Green */
+  /* Secondary buttons */
+  --btn-secondary-bg: #ccd9e5;
+  --btn-secondary-bg-hover: #bac8d8;
+  --btn-secondary-bg-active: #aab8cb;
+  --btn-secondary-text: #2e2e2e;
+  --btn-secondary-text-hover: #1f1f1f;
+  --btn-secondary-text-active: #1a1a1a;
 
-  /* Hover/Active des Boutons */
-  --btn-bg: #1976d2; /* Bleu foncé */
-  --btn-primary-hover: #3578e4; /* Sky Blue */
-  --btn-primary-active: #1e90ff; /* Dodger Blue */
-  --btn-secondary-hover: #66bb6a; /* Vert moyen */
-  --btn-secondary-active: #43a047; /* Vert foncé */
+  /* Add to favorites (active) */
+  --btn-fav-active-bg: #ffcccb;
+  --btn-fav-active-text: #8b0000;
 
-  /* Icônes */
-  --icon-primary: #4287f5; /* Sky Blue */
-  --icon-hover: #2176ff; /* Deep Sky Blue */
-  --favorite-icon: #1e90ff; /* Bleu ciel */
-  --favorite-icon-hover: #0d47a1; /* Bleu profond */
+  /* UI Icons */
+  --icon-ui-color: #6b7280;
+  --icon-ui-hover: #374151;
+  --accent: #2c3e50;
 
-  /* Statistiques */
-  --stats-bg: #ffffff; /* Pure White */
-  --stats-text: #4a4a4a; /* Slate Gray */
+  /* Favorite Icon */
+  --icon-fav-color: #888888;
+  --icon-fav-hover: #555555;
+  --icon-fav-active: #dc2626;
+  --icon-fav-active-hover: #b91c1c;
 
-  /* Blocs Statistiques */
-  --stat-block-bg: #f0f0f0;
-  --stat-block-border: #e0e0e0;
-  --stat-title-text: #6b7280;
-  --stat-number-text: #1e90ff; /* Dodger Blue */
+  /* Delete Icon */
+  --icon-delete-color: #9ca3af;
+  --icon-delete-hover: #ef4444;
+
+  /* Statistics block */
+  --stat-title: #5f6b78;
+  --stat-number: #1f2d3d;
+  --stat-bg: #f0f4f8;
+  --stat-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  /* Favorite Quotes - Soft Theme */
+  --fav-bg: #ffffff;
+  --fav-text-primary: #2e2e2e;
+  --fav-text-secondary: #606770;
+  --fav-hover-bg: #f0f4f8;
+  --fav-shadow: 0 2px 6px rgba(46, 46, 46, 0.1);
+  --fav-icon-color: #8a8a8a;
+  --fav-icon-hover-color: #2c3e50;
+
+  /* Soft theme - Select */
+  --select-bg: #f7f9fb;
+  --select-text: #2e2e2e;
+  --select-border: #cdd9e3;
+  --select-bg-hover: #e5ecf2;
+  --select-border-focus: #8aa8c3;
+  --select-option-selected-bg: #dce6f2;
+  --select-option-selected-text: #1e1e1e;
 }
 
-/* Thème Chaleureux & Naturel */
 body.warm {
   /* Base */
-  --bg: #f5f5dc; /* Cream Beige */
-  --container-bg: #ffe4b5; /* Warm Sand */
-  --text-primary: #5c4033; /* Earth Brown */
-  --text-secondary: #4a4a4a; /* Slate Gray */
+  --bg: #fffaf0;
+  --container-bg: #fff0d5;
+  --text-primary: #5a3825;
+  --text-secondary: #6f4e37;
+  --loader-accent: #ff7043;
 
-  /* Titres */
-  --title-main: #3b2f2f; /* Rich Brown */
-  --subtitle: #8b6914; /* Golden Amber */
+  /* Titles */
+  --title-primary: #4e342e;
+  --title-secondary: #a9741e;
+  --title-theme-card: #6d4c41;
+  --text-theme-card: #5c4033;
 
-  /* Texte d'absence de favoris */
-  --no-favorites: #a0785a; /* Dusty Brown */
+  /* No favorites text */
+  --no-favorites-text: #a0785a;
 
   /* ThemeCard */
-  --th-bg: #ffffff;
-  --th-title: #3b2f2f;
-  --th-text: #5c4033;
-  --th-close-icon-hover: #fbc02d; /* Doré plus intense */
-  --th-btn-hover: #ffe0b2; /* Beige plus intense */
-  --th-btn-active: #fbc02d; /* Doré actif */
+  --bg-theme-card: #fff3d9;
+  --btn-bg-theme-card: #fbe7c6;
+  --btn-bg-hover-theme-card: #f4c17a;
+  --btn-text-theme-card: #6d4c41;
+  --btn-text-hover-theme-card: #fffaf0;
+  --btn-active-bg-theme-card: #6d4c41;
+  --btn-active-text-theme-card: #fffaf0;
 
-  /* Boutons Principaux */
-  --btn-primary-bg: #fbc02d; /* Golden Yellow */
-  --btn-primary-text: #333333;
-  --btn-primary-text-hover: #333333;
-  --btn-primary-bg-hover: #ffd700; /* Bright Yellow */
-  --btn-primary-active: #cc9900; /* Amber Gold */
+  /* Primary buttons */
+  --btn-primary-bg: #a9741e;
+  --btn-primary-bg-hover: #8c5f1a;
+  --btn-primary-bg-active: #704b15;
+  --btn-primary-text: #fffaf0;
+  --btn-primary-text-hover: #fef3e0;
+  --btn-primary-text-active: #faebd7;
 
-  /* Bouton Secondaire */
-  --btn-secondary-bg: #f2a8b4; /* Blush Pink */
-  --btn-secondary-text: #ffffff;
-  --btn-secondary-text-hover: #ffffff;
-  --btn-secondary-bg-hover: #ffb3d1; /* Lighter Pink */
-  --btn-secondary-active: #ff5c8d; /* Rose Red */
+  /* Secondary buttons */
+  --btn-secondary-bg: #ebc99b;
+  --btn-secondary-bg-hover: #dfbb8d;
+  --btn-secondary-bg-active: #d3ae7f;
+  --btn-secondary-text: #5a3825;
+  --btn-secondary-text-hover: #3e2719;
+  --btn-secondary-text-active: #2c1b11;
 
-  /* Hover/Active des Boutons */
-  --btn-bg: #f57c00; /* Orange chaud */
-  --btn-primary-hover: #fbc02d; /* Golden Yellow */
-  --btn-primary-active: #cc9900; /* Amber Gold */
-  --btn-secondary-hover: #ff8fa3; /* Rose clair */
-  --btn-secondary-active: #ff5c8d; /* Rose foncé */
+  /* Add to favorites (active) */
+  --btn-fav-active-bg: #ffd9b3;
+  --btn-fav-active-text: #a74c00;
 
-  /* Icônes */
-  --icon-primary: #fbc02d; /* Golden Yellow */
-  --icon-hover: #ffa000; /* Orange Sunrise */
-  --favorite-icon: #fbc02d; /* Jaune doré */
-  --favorite-icon-hover: #cc9900; /* Ambre */
+  /* UI Icons */
+  --icon-ui-color: #a9741e;
+  --icon-ui-hover: #5a3825;
+  --accent: #a9741e;
 
-  /* Statistiques */
-  --stats-bg: #ffe4b5; /* Warm Sand */
-  --stats-text: #5c4033; /* Earth Brown */
+  /* Favorite Icon */
+  --icon-fav-color: #b08968;
+  --icon-fav-hover: #8b5e3c;
+  --icon-fav-active: #d97706;
+  --icon-fav-active-hover: #b45309;
 
-  /* Blocs Statistiques */
-  --stat-block-bg: #ffe4b5;
-  --stat-block-border: #ffd700;
-  --stat-title-text: #8b6914;
-  --stat-number-text: #cc9900; /* Amber Gold */
+  /* Delete Icon */
+  --icon-delete-color: #b5543c;
+  --icon-delete-hover: #d32f2f;
+
+  /* Statistics block */
+  --stat-title: #8b6914;
+  --stat-number: #5a3825;
+  --stat-bg: #fef4e5;
+  --stat-shadow: 0 1px 3px rgba(120, 80, 50, 0.1);
+
+  /* Favorite Quotes - Warm Theme */
+  --fav-bg: #fff0d5;
+  --fav-text-primary: #5a3825;
+  --fav-text-secondary: #6f4e37;
+  --fav-hover-bg: #fbead1;
+  --fav-shadow: 0 2px 6px rgba(90, 56, 37, 0.15);
+  --fav-icon-color: #a0785a;
+  --fav-icon-hover-color: #4e342e;
+
+  /* Warm theme - Select */
+  --select-bg: #fffaf0;
+  --select-text: #5a3825;
+  --select-border: #e6d2b8;
+  --select-bg-hover: #f5ebdd;
+  --select-border-focus: #c98c4d;
+  --select-option-selected-bg: #f1dbc2;
+  --select-option-selected-text: #3c2719;
 }
 
-/* Thème Moderne & Professionnel */
 body.modern {
   /* Base */
-  --bg: #e8f0fe; /* Light Frost */
-  --container-bg: #ffffff; /* Pure White */
-  --text-primary: #0f4c81; /* Ocean Blue */
-  --text-secondary: #333333; /* Deep Charcoal */
+  --bg: #f2f6fc;
+  --container-bg: #ffffff;
+  --text-primary: #0d3c61;
+  --text-secondary: #4a4a4a;
+  --loader-accent: #00bcd4;
 
-  /* Titres */
-  --title-main: #0d47a1; /* Deep Navy */
-  --subtitle: #555555; /* Dark Gray */
+  /* Titles */
+  --title-primary: #0c3e6f;
+  --title-secondary: #5c6bc0;
+  --title-theme-card: #1a237e;
+  --text-theme-card: #3949ab;
 
-  /* Texte d'absence de favoris */
-  --no-favorites: #999999; /* Cool Gray */
+  /* No favorites text */
+  --no-favorites-text: #999999;
 
   /* ThemeCard */
-  --th-bg: #fafafa;
-  --th-title: #1a237e; /* Royal Indigo */
-  --th-text: #3949ab; /* Strong Blue */
-  --th-close-icon-hover: #ff5722; /* Corail vif */
-  --th-btn-hover: #c8e6c9; /* Vert clair */
-  --th-btn-active: #81c784; /* Vert actif */
+  --bg-theme-card: #e6ecfb;
+  --btn-bg-theme-card: #c7d6f9;
+  --btn-bg-hover-theme-card: #93a9f8;
+  --btn-text-theme-card: #0c3e6f;
+  --btn-text-hover-theme-card: #f2f6fc;
+  --btn-active-bg-theme-card: #0c3e6f;
+  --btn-active-text-theme-card: #f2f6fc;
 
-  /* Boutons Principaux */
-  --btn-primary-bg: #ff9800; /* Coral Blaze */
+  /* Primary buttons */
+  --btn-primary-bg: #1a237e;
+  --btn-primary-bg-hover: #151c6b;
+  --btn-primary-bg-active: #101657;
   --btn-primary-text: #ffffff;
-  --btn-primary-text-hover: #ffffff;
-  --btn-primary-bg-hover: #ff8f00; /* Slightly lighter or darker */
-  --btn-primary-active: #e64a19; /* Flame Red */
+  --btn-primary-text-hover: #f0f0f0;
+  --btn-primary-text-active: #e0e0e0;
 
-  /* Bouton Secondaire */
-  --btn-secondary-bg: #89c3a1; /* Fresh Mint */
-  --btn-secondary-text: #000000;
-  --btn-secondary-text-hover: #000000;
-  --btn-secondary-bg-hover: #81c784; /* Mint Green */
-  --btn-secondary-active: #4caf50; /* Green */
+  /* Secondary buttons */
+  --btn-secondary-bg: #c5d5f0;
+  --btn-secondary-bg-hover: #b2c6e9;
+  --btn-secondary-bg-active: #a0b7e0;
+  --btn-secondary-text: #0d3c61;
+  --btn-secondary-text-hover: #092a44;
+  --btn-secondary-text-active: #061c30;
 
-  /* Hover/Active des Boutons */
-  --btn-bg: #0d47a1; /* Bleu profond */
-  --btn-primary-hover: #ff9800; /* Coral Blaze */
-  --btn-primary-active: #e64a19; /* Deep Flame */
-  --btn-secondary-hover: #589270; /* Menthe clair */
-  --btn-secondary-active: #4caf50; /* Vert menthe foncé */
+  /* Add to favorites (active) */
+  --btn-fav-active-bg: #cfdfff;
+  --btn-fav-active-text: #003366;
 
-  /* Icônes */
-  --icon-primary: #ff9800; /* Coral Blaze */
-  --icon-hover: #ff5722; /* Flame Red */
-  --favorite-icon: #ff5722; /* Flamme rouge */
-  --favorite-icon-hover: #e64a19; /* Rouge profond */
+  /* UI Icons */
+  --icon-ui-color: #5c6bc0;
+  --icon-ui-hover: #1e3a8a;
+  --accent: #0c3e6f;
 
-  /* Statistiques */
-  --stats-bg: #ffffff; /* Pure White */
-  --stats-text: #0f4c81; /* Ocean Blue */
+  /* Favorite Icon */
+  --icon-fav-color: #94a3b8;
+  --icon-fav-hover: #64748b;
+  --icon-fav-active: #2563eb;
+  --icon-fav-active-hover: #1d4ed8;
 
-  /* Blocs Statistiques */
-  --stat-block-bg: #ffffff;
-  --stat-block-border: #eceff1;
-  --stat-title-text: #555555;
-  --stat-number-text: #ff5722; /* Flame Red */
+  /* Delete Icon */
+  --icon-delete-color: #94a3b8;
+  --icon-delete-hover: #ef4444;
+
+  /* Statistics block */
+  --stat-title: #455a64;
+  --stat-number: #0d3c61;
+  --stat-bg: #e9eff7;
+  --stat-shadow: 0 1px 3px rgba(30, 60, 90, 0.1);
+
+  /* Favorite Quotes - Modern Theme */
+  --fav-bg: #ffffff;
+  --fav-text-primary: #0d3c61;
+  --fav-text-secondary: #4a4a4a;
+  --fav-hover-bg: #e3eaf9;
+  --fav-shadow: 0 2px 6px rgba(13, 60, 97, 0.12);
+  --fav-icon-color: #999999;
+  --fav-icon-hover-color: #0c3e6f;
+
+  /* Modern theme - Select */
+  --select-bg: #f2f6fc;
+  --select-text: #2a2a2a;
+  --select-border: #c3d4ea;
+  --select-bg-hover: #e6ecf7;
+  --select-border-focus: #6d9ccf;
+  --select-option-selected-bg: #d6e3f5;
+  --select-option-selected-text: #1d1d1d;
 }

@@ -12,22 +12,17 @@ function AppLayout({ toggleThemeCard }) {
   return (
     <>
       {screen.isMobile ? (
-        <>
-          <AnimatePresence mode="wait">
-            {!showDetails ? (
-              <MainCard
-                key={"main-card"}
-                openDetails={handleShowDetails}
-                openThemeMenu={toggleThemeCard}
-              />
-            ) : (
-              <AppDetails
-                key={"app-details"}
-                closeDetails={handleShowDetails}
-              />
-            )}
-          </AnimatePresence>
-        </>
+        <AnimatePresence mode="wait">
+          {!showDetails ? (
+            <MainCard
+              key={"main-card"}
+              openDetails={handleShowDetails}
+              openThemeMenu={toggleThemeCard}
+            />
+          ) : (
+            <AppDetails key={"app-details"} closeDetails={handleShowDetails} />
+          )}
+        </AnimatePresence>
       ) : (
         <>
           <MainCard openThemeMenu={toggleThemeCard} /> <AppDetails />

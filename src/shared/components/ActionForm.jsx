@@ -3,44 +3,40 @@ import Button from "./Button";
 import { useFavoriteQuote } from "../../features/favorites/hooks/useFavoriteQuote";
 import { primaryTags } from "../utils/utils";
 
-function ActionForm({ newQuote, changeTag }) {
+function ActionForm({ generateQuote, changeTag }) {
   const { addFavorite, favoriteButton } = useFavoriteQuote();
 
   return (
-    <form
-      className="grid md:flex md:justify-between md:items-center md:px-6 gap-4"
-      onSubmit={newQuote}
-    >
+    <form className="grid gap-4" onSubmit={generateQuote}>
       <Button
         icon={
           favoriteButton.isInFav ? (
-            <LuHeart className="text-[var(--favorite-icon)] fill-[var(--favorite-icon)]" />
+            <LuHeart className="text-[var(--icon-fav-active)] fill-[var(--favorite-icon)] hover:text-[var(--icon-fav-active-hover)]" />
           ) : (
-            <LuHeart className="text-white" />
+            <LuHeart className="text-[var(--icon-fav-color)] hover:text-[var(--icon-fav-hover)]" />
           )
         }
         label={favoriteButton.label}
         onClick={addFavorite}
         type="button"
+        disabled={favoriteButton.isInFav}
       />
-      <div className="grid grid-cols-2 gap-4 md:w-1/2">
+      <div className="grid grid-cols-2 gap-4">
         <select
-          className="capitalize hover:cursor-pointer text-center text-[var(--text-secondary)] shadow hover:shadow-lg duration-300"
+          className="capitalize hover:cursor-pointer text-center bg-[var(--select-bg)] hover:bg-[var(--select-bg-hover)] text-[var(--select-text)] border border-[var(--select-border)] focus:border-[var(--select-border-focus)] duration-300 rounded"
           name="quote_tag"
-          id=""
           onChange={(e) => changeTag(e)}
         >
           {primaryTags.map((tag) => (
-            <option className="bg-[var(--container-bg)]" key={tag}>
+            <option
+              key={tag}
+              className="[&:selected]:bg-[var(--select-option-selected-bg)] [&:selected]:text-[var(--select-option-selected-text)]"
+            >
               {tag}
             </option>
           ))}
         </select>
-        <Button
-          disabled={favoriteButton.isInFav}
-          label="New quote"
-          type="submit"
-        />
+        <Button label="New quote" type="submit" />
       </div>
     </form>
   );

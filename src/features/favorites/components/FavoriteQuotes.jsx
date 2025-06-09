@@ -6,46 +6,61 @@ function FavoriteQuotes() {
   const { favQuotes, removeFavorite } = useFavoriteQuote();
 
   return (
-    <div className="h-[70%] bg-[var(--bg)] rounded overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--btn-primary-bg)] scrollbar-track-[var(--container)]">
-      <h3 className="mt-4 text-[var(--subtitle)] mb-4">Favorites</h3>
+    <div className="h-[70%] bg-[var(--fav-bg)] rounded overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--btn-primary-bg)] scrollbar-track-[var(--container)]">
+      <h3 className="mt-4 text-[var(--title-secondary)] mb-4">Favorites</h3>
       <div className="flex flex-col gap-4 px-4 duration-200 ease-in pb-4">
         <AnimatePresence mode="sync">
-          {favQuotes.length >= 1 ? (
-            favQuotes.map((quote, id) => (
+          {favQuotes.length > 0 ? (
+            favQuotes.map((quote) => (
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                exit={{ height: 0, opacity: 0 }}
+                key={quote.id ?? quote.body}
+                whileHover={{ scale: 1.03 }}
+                exit={{
+                  height: 0,
+                  opacity: 0,
+                  marginBottom: 0,
+                  paddingTop: 0,
+                  paddingBottom: 0,
+                  transition: { duration: 0.35, ease: "easeInOut" },
+                }}
                 transition={{
                   duration: 0.4,
                   type: "spring",
                   bounce: 0,
                   opacity: { duration: 0.2 },
                 }}
-                className="flex justify-between gap-6 items-center py-2 px-4 shadow hover:shadow-lg rounded overflow-ellipsis"
-                key={id}
+                className="flex justify-between gap-6 items-center py-2 px-4 rounded bg-[var(--fav-bg)] hover:bg-[var(--fav-hover-bg)] shadow-[var(--fav-shadow)] hover:shadow-lg"
+                role="listitem"
               >
-                <div className="text-left w-11/12">{quote.body}</div>
+                <div
+                  className="text-left w-11/12 text-[var(--fav-text-primary)] line-clamp-3"
+                  title={quote.body}
+                >
+                  {quote.body}
+                </div>
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   whileHover={{ scale: 1.1 }}
-                  className="text-red-500 hover:text-red-700 cursor-pointer"
+                  className="text-[var(--icon-delete-color)] hover:text-[var(--icon-delete-hover)] cursor-pointer"
                   type="button"
+                  aria-label="Remove favorite quote"
                   onClick={() => removeFavorite(quote)}
                 >
-                  <LuTrash />
+                  <LuTrash size={20} />
                 </motion.button>
               </motion.div>
             ))
           ) : (
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
               key="empty-favorite"
-              className="my-8 italic text-[var(--no-favorites)]"
+              className="my-8 italic text-[var(--no-favorites-text)]"
+              role="alert"
             >
-              No favorites yet
+              “ Your favorites list is still waiting for its first quote. ”
             </motion.p>
           )}
         </AnimatePresence>
