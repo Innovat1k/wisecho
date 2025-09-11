@@ -23,37 +23,41 @@ Wisecho is a fully responsive quote generator app built with React.js and Tailwi
 
 Wisecho allows users to:
 
-- Generate random or filtered quotes by tag  
-- Preview and switch between multiple themes  
-- Add and manage favorite quotes  
-- View real-time statistics on generated and favorited quotes  
+- Generate random or filtered quotes by tag
+- Preview and switch between multiple themes
+- Add and manage favorite quotes
+- View real-time statistics on generated and favorited quotes
 
 The app follows a **mobile-first approach**, is fully responsive, and uses a **modular, scalable architecture** with **Jotai** for state management.  
 It also includes a **robust test suite** using **Vitest** and **React Testing Library** for maintainability and reliability.
 
 ---
 
-## ✨ Features
+## ✨ Features & Navigation
 
-- Random quote generation  
-- Filter quotes by tag  
-- Preview and switch themes  
-- Manage favorite quotes (add/remove)  
-- Display real-time statistics  
-- Fully responsive UI (mobile, tablet, desktop)  
-- Complete test coverage for components, hooks, and integration
+- **Quotes Management**
+  - Generate random quotes
+  - Filter quotes by category
+  - Add quotes to favorites
+- **Theme Selector**
+  - Preview available themes
+  - Select and apply a theme
+- **Statistics**
+  - View number of generated quotes
+  - View favorite quotes
+  - Delete a quote from favorites
 
 ---
 
 ## 🔧 Technologies Used
 
-- [React.js](https://reactjs.org/)  
-- [Tailwind CSS](https://tailwindcss.com/)  
-- [Jotai](https://jotai.org/) – state management  
-- [Framer Motion](https://www.framer.com/motion/) – animations  
-- [Vite](https://vitejs.dev/) – dev & build tool  
-- [React Icons](https://react-icons.github.io/react-icons/) – icons  
-- [Vitest](https://vitest.dev/) – testing framework  
+- [React.js](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Jotai](https://jotai.org/) – state management
+- [Framer Motion](https://www.framer.com/motion/) – animations
+- [Vite](https://vitejs.dev/) – dev & build tool
+- [React Icons](https://react-icons.github.io/react-icons/) – icons
+- [Vitest](https://vitest.dev/) – testing framework
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) – testing utilities
 
 ---
@@ -84,9 +88,9 @@ npm run test
 
 The project includes a full testing setup:
 
-- Unit tests for custom hooks (`useResponsive`, `useQuoteFetcher`)  
-- Integration tests for global features (theme switching, favorites, statistics reset)  
-- Mocking of browser APIs and external dependencies for reliable, predictable tests  
+- Unit tests for custom hooks (`useResponsive`, `useQuoteFetcher`)
+- Integration tests for global features (theme switching, favorites, statistics reset)
+- Mocking of browser APIs and external dependencies for reliable, predictable tests
 
 ```bash
 npm run test
@@ -98,21 +102,26 @@ npm run test
 
 ```bash
 src/
-├── features/                  # Feature-specific components & hooks
-│   ├── components/
-│   └── hooks/
+├── features/                # App-specific features
+│   ├── favorites/           # Favorites management
+│   │   ├── components/      # Components related to favorites
+│   │   └── hooks/           # Hooks specific to favorites
+│   ├── quote/               # Quotes management
+│       ├── components/
+│       └── hooks/
 │
-├── shared/                    # Reusable components & hooks
-│   ├── components/
-│   └── hooks/
+├── shared/                  # Reusable code across the project
+│   ├── atoms/               # Global state management (Jotai)
+│   ├── components/          # Generic UI components
+│   ├── hooks/               # Generic hooks (useResponsive, etc.)
+│   ├── themes/              # Global themes and styles
+│   └── tests/               # Shared/util test helpers
 │
-├── themes/                    # Theme styles & configuration
-├── atoms/                     # Global state (Jotai)
-├── utils/                     # Utility functions
+├── tests/                   # Global tests (App.data.test.jsx, etc.)
 │
-├── App.jsx                    # Root component
-├── main.jsx                   # Entry point
-└── server.js                  # Backend proxy for API calls
+├── App.jsx                  # Main entry point of the app
+└── main.jsx                 # Bootstrap React
+
 ```
 
 ---
@@ -120,4 +129,3 @@ src/
 ## 📄 License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
-
