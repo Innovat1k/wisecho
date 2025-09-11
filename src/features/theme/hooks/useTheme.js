@@ -50,7 +50,6 @@ export const useTheme = () => {
       selected: "",
     });
     setIsThemeCardOpen(!isThemeCardOpen);
-    console.log(theme);
   };
 
   return {

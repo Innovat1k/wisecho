@@ -37,7 +37,7 @@ export const useFavoriteQuote = () => {
         ? { isInFav: true, label: "In favorites" }
         : {
             isInFav: false,
-            label: "Add to favorites",
+            label: "Add to favorite",
           }
     );
   }, [favQuotes, current]);

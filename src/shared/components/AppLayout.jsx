@@ -18,14 +18,20 @@ function AppLayout({ toggleThemeCard }) {
               key={"main-card"}
               openDetails={handleShowDetails}
               openThemeMenu={toggleThemeCard}
+              isOnMobile={screen.isMobile}
             />
           ) : (
-            <AppDetails key={"app-details"} closeDetails={handleShowDetails} />
+            <AppDetails
+              key={"app-details"}
+              closeDetails={handleShowDetails}
+              isOnMobile={screen.isMobile}
+            />
           )}
         </AnimatePresence>
       ) : (
         <>
-          <MainCard openThemeMenu={toggleThemeCard} /> <AppDetails />
+          <MainCard openThemeMenu={toggleThemeCard} />
+          <AppDetails />
         </>
       )}
     </>

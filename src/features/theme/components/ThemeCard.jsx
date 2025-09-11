@@ -45,19 +45,20 @@ function ThemeCard({ isOpened, themeActions }) {
               <h2 className="text-xl mb-4 text-[var(--title-theme-card)]">
                 Change theme
               </h2>
-              <LuX
-                aria-label="Close theme menu"
+              <button
                 className="hover:scale-110 text-[var(--icon-ui-color)] hover:text-[var(--icon-ui-hover)] cursor-pointer duration-300"
                 onClick={cancelThemeChange}
-                size={25}
-              />
+                aria-label="Close theme menu"
+              >
+                <LuX size={25} />
+              </button>
             </div>
 
             <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
               <div className="flex justify-between items-center sm:flex-col sm:justify-normal sm:w-1/3 mb-6 gap-3">
                 {themesList.map((theme, index) => (
                   <motion.button
-                    aria-label="Preview theme"
+                    aria-label={`Preview ${theme} theme`}
                     className={`capitalize  hover:bg-[var(--btn-bg-hover-theme-card)]  hover:text-[var(ext-hover-theme-card)] w-1/3 sm:w-full p-1 rounded hover:shadow-sm transition-colors duration-300 cursor-pointer ${
                       theme === currentTheme
                         ? "bg-[var(--btn-active-bg-theme-card)] text-[var(--btn-active-text-theme-card)]"
@@ -79,23 +80,29 @@ function ThemeCard({ isOpened, themeActions }) {
                     <span className="text-xs text-center text-[var(--text-secondary)] sm:text-lg">
                       {label}
                     </span>
-                    <button className="text-xs py-1 px-2 bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] rounded cursor-pointer">
-                      Apply theme !
-                    </button>
+                    <span className="text-xs py-1 px-2 bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] rounded">
+                      Previewing...
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
             <form
               className="grid grid-cols-2 sm:flex sm:justify-end gap-4"
+              data-testid="theme-form"
               onSubmit={applyTheme}
             >
               <Button
                 label="Cancel"
                 type="button"
                 onClick={cancelThemeChange}
+                ariaLabel="Cancel change"
               />
-              <Button label="Apply theme" type="submit" />
+              <Button
+                label="Apply theme"
+                type="submit"
+                ariaLabel="Apply theme"
+              />
             </form>
           </motion.div>
         </>

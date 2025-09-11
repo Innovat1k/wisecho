@@ -2,7 +2,7 @@
  * Custom hook to manage app's data persisting on localStorage
  * Features:
  * - Save app's data (theme, quote, favorite and statistic) to prevent data loss after refresh / F5
- * - Clear saved data from loacalStorage
+ * - Clear saved data from localStorage
  */
 
 import { useAtom } from "jotai";

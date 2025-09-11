@@ -4,7 +4,7 @@ import FavoriteQuotes from "../../features/favorites/components/FavoriteQuotes";
 import QuoteStatistic from "../../features/statistics/QuoteStatistic";
 import { usePersistStorage } from "../hooks/usePersistStorage";
 
-function AppDetails({ closeDetails }) {
+function AppDetails({ closeDetails, isOnMobile }) {
   const { resetAppState } = usePersistStorage();
 
   return (
@@ -23,20 +23,26 @@ function AppDetails({ closeDetails }) {
       className="w-[90%] sm:w-[45%] md:w-[40%] h-[80vh] max-h-[80vh] mt-12 p-4 bg-[var(--container-bg)] rounded-lg text-center overflow-y-auto shadow-2xl"
     >
       <div className="flex justify-between items-center mb-5">
-        <LuChevronRight
-          className="cursor-pointer hover:scale-110 duration-200 ease-in sm:hidden text-[var(--icon-ui-color)] hover:text-[var(--icon-ui-hover)]"
-          onClick={closeDetails}
-          size={25}
-        />
+        {isOnMobile && (
+          <button
+            aria-label="Close details"
+            className="cursor-pointer hover:scale-110 duration-200 ease-in sm:hidden text-[var(--icon-ui-color)] hover:text-[var(--icon-ui-hover)]"
+            onClick={closeDetails}
+          >
+            <LuChevronRight size={25} />
+          </button>
+        )}
+
         <h2 className="font-bold w-11/12 text-lg text-[var(--title-primary)]">
           App Details
         </h2>
-        <LuRefreshCw
-          title="Reset all data"
+        <button
+          aria-label="Clear data"
           className="cursor-pointer hover:scale-110 duration-200 ease-in text-[var(--icon-ui-color)] hover:text-[var(--accent)]"
           onClick={resetAppState}
-          size={20}
-        />
+        >
+          <LuRefreshCw size={20} />
+        </button>
       </div>
 
       <p className="text-sm text-[var(--text-secondary)] mb-4">

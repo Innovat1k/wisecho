@@ -5,18 +5,16 @@ import { getLocalStorage } from "../utils/utils";
 const persistedData = getLocalStorage("genQuote", {});
 
 // Atom for current theme
-export const themeAtom = atom(persistedData.theme ?? "modern");
+export const themeAtom = atom("modern");
 
 // Atom for current quote
-export const quoteAtom = atom(persistedData.currentQuote ?? {});
+export const quoteAtom = atom({});
 
 // Favorite quotes list
-export const favoriteQuotesAtom = atom(persistedData.favorite ?? []);
+export const favoriteQuotesAtom = atom([]);
 
 // App generation & favorites status : generated starts by 1 with the pre-generated random quote
-export const statisticAtom = atom(
-  persistedData.statistic ?? { generatedCount: 0, favoritesCount: 0 }
-);
+export const statisticAtom = atom({ generatedCount: 0, favoritesCount: 0 });
 
 // Atom for selected tag for fetching
 export const tagAtom = atom("random");

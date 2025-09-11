@@ -1,6 +1,9 @@
 # 💼 <Wisecho>
 
-A simple and fully responsive quote generator app to demonstrate my web development skills, featuring theme preview, tag-based filtering, favorites management, and real-time statistics.
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
+Wisecho is a fully responsive quote generator app built with React.js and Tailwind CSS, featuring theme preview, tag-based filtering, favorites management, real-time statistics, and a complete test suite.
 
 ---
 
@@ -10,43 +13,48 @@ A simple and fully responsive quote generator app to demonstrate my web developm
 - [✨ Features](#-features)
 - [🔧 Technologies Used](#-technologies-used)
 - [📦 Installation & Usage](#-installation--usage)
+- [🧪 Tests](#-tests)
 - [🗂️ Project Structure](#-project-structure)
-- [🧱 Roadmap](#-roadmap)
-- [🤝 Contributions](#-contributions)
 - [📄 License](#-license)
 
 ---
 
 ## 📝 Description
 
-Wisecho is a modern, responsive quote generator app built using React.js and styled with Tailwind CSS. It allows users to:
+Wisecho allows users to:
 
-Generate random or filtered quotes by tag.
-Preview and switch between multiple themes for better visual comfort.
-Add and manage favorite quotes.
-View real-time statistics on generated and favorited quotes.
-The project follows a mobile-first approach but has been adapted to be fully responsive across all screen sizes — from mobile to desktop.
-It uses a modular architecture and is built with scalability, performance, and user experience in mind.
+- Generate random or filtered quotes by tag  
+- Preview and switch between multiple themes  
+- Add and manage favorite quotes  
+- View real-time statistics on generated and favorited quotes  
+
+The app follows a **mobile-first approach**, is fully responsive, and uses a **modular, scalable architecture** with **Jotai** for state management.  
+It also includes a **robust test suite** using **Vitest** and **React Testing Library** for maintainability and reliability.
+
+---
 
 ## ✨ Features
 
-Wisecho currently supports the following user-facing features:
+- Random quote generation  
+- Filter quotes by tag  
+- Preview and switch themes  
+- Manage favorite quotes (add/remove)  
+- Display real-time statistics  
+- Fully responsive UI (mobile, tablet, desktop)  
+- Complete test coverage for components, hooks, and integration
 
-✅ Random quote generation  
-✅ Filter quotes by tag  
-✅ Preview and switch between multiple themes  
-✅ Manage favorite quotes (add/remove)  
-✅ Display real-time statistics  
-✅ Fully responsive UI (mobile, tablet, desktop)
+---
 
 ## 🔧 Technologies Used
 
-- [React.js](https://reactjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Jotai](https://jotai.org/) – state management
-- [Framer Motion](https://www.framer.com/motion/) – animations
-- [Vite](https://vitejs.dev/) – dev & build tool
-- [React Icons](https://react-icons.github.io/react-icons/) – icons
+- [React.js](https://reactjs.org/)  
+- [Tailwind CSS](https://tailwindcss.com/)  
+- [Jotai](https://jotai.org/) – state management  
+- [Framer Motion](https://www.framer.com/motion/) – animations  
+- [Vite](https://vitejs.dev/) – dev & build tool  
+- [React Icons](https://react-icons.github.io/react-icons/) – icons  
+- [Vitest](https://vitest.dev/) – testing framework  
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) – testing utilities
 
 ---
 
@@ -65,6 +73,23 @@ npm run dev
 
 # 4. Build for production
 npm run build
+
+# 5. Run tests
+npm run test
+```
+
+---
+
+## 🧪 Tests
+
+The project includes a full testing setup:
+
+- Unit tests for custom hooks (`useResponsive`, `useQuoteFetcher`)  
+- Integration tests for global features (theme switching, favorites, statistics reset)  
+- Mocking of browser APIs and external dependencies for reliable, predictable tests  
+
+```bash
+npm run test
 ```
 
 ---
@@ -73,52 +98,22 @@ npm run build
 
 ```bash
 src/
-├── features/                  # Domain-specific features (e.g., ThemeCard)
-│   ├── components/            # UI components specific to a feature
-│   ├── hooks/                 # Feature-specific logic and behavior
-│   └── ...                    # Additional logic
+├── features/                  # Feature-specific components & hooks
+│   ├── components/
+│   └── hooks/
 │
-├── shared/                   # Generic UI and reusable logic
-│   ├── components/            # Common components (e.g., layout, loaders)
-│   ├── hooks/                 # Shared custom hooks used across features
+├── shared/                    # Reusable components & hooks
+│   ├── components/
+│   └── hooks/
 │
-├── themes/                   # Theme styles and configuration (CSS variables, logic)
-├── atoms/                    # Global state management using Jotai
-├── utils/                    # Utility functions and helpers
+├── themes/                    # Theme styles & configuration
+├── atoms/                     # Global state (Jotai)
+├── utils/                     # Utility functions
 │
-├── App.jsx                   # Root component: sets up the layout and logic
-├── main.jsx                  # App entry point (ReactDOM rendering)
-└── server.js                 # Lightweight backend proxy (handles CORS for API calls)
-
+├── App.jsx                    # Root component
+├── main.jsx                   # Entry point
+└── server.js                  # Backend proxy for API calls
 ```
-
----
-
-## 🧱 Roadmap
-
-- [x] Add a favorites system for quotes
-- [x] Track statistics for generated and favorited quotes
-- [x] Switch from local quote fetching to a remote API
-- [x] Persist theme, stats, quotes and favorites in `localStorage`
-- [x] Add tag-based quote filtering
-- [x] Make the app responsive on larger screens
-- [x] Refactor project structure to a hybrid feature-based module system
-- [ ] Update and improve global styling
-- [ ] Implement full test suite for components, hooks and features
-
----
-
-## 🤝 Contributions
-
-🙅‍♂️ This project does not accept direct contributions at this time, as it is part of my personal portfolio and learning journey.
-
-However, suggestions, ideas, and bug reports are welcome!
-
-- Open an issue for feedback or feature requests
-- Leave a comment or start a discussion
-- Reach out through social media or email
-
-Thank you for your interest and support!
 
 ---
 
@@ -126,4 +121,3 @@ Thank you for your interest and support!
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
----

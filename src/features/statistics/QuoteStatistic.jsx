@@ -17,9 +17,17 @@ function QuoteStatistic() {
 
   return (
     <div className="flex justify-evenly gap-2 mb-6">
-      {[ 
-        { title: "Generated quotes", count: generatedCount },
-        { title: "Favorites", count: favoritesCount }
+      {[
+        {
+          title: "Generated quotes",
+          count: generatedCount,
+          id: "generated count",
+        },
+        {
+          title: "Favorite quotes",
+          count: favoritesCount,
+          id: "favorites count",
+        },
       ].map((item, index) => (
         <motion.div
           key={item.title}
@@ -28,6 +36,7 @@ function QuoteStatistic() {
           initial="hidden"
           animate="visible"
           className="bg-[var(--stat-bg)]/50 p-2 w-1/2 rounded shadow-[var(--stat-shadow)]"
+          data-testid={item.id}
         >
           <h3 className="text-[var(--stat-title)] font-semibold text-sm sm:text-base">
             {item.title}

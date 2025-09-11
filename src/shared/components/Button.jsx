@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-function Button({ type, label, icon, onClick, disabled }) {
+function Button({ type, label, icon, onClick, disabled, ariaLabel }) {
   const isSubmit = type === "submit";
   const isFavorite = label === "Favorite";
 
@@ -20,7 +20,7 @@ function Button({ type, label, icon, onClick, disabled }) {
     ? "text-[var(--btn-primary-text)] hover:text-[var(--btn-primary-text-hover)]"
     : "text-[var(--btn-secondary-text)] hover:text-[var(--btn-secondary-text-hover)]";
 
-  const isAlreadyFavorite = label === "Favorite" && disabled;
+const isAlreadyFavorite = /favorite/i.test(label) && disabled;
 
   return (
     <motion.button
@@ -29,6 +29,7 @@ function Button({ type, label, icon, onClick, disabled }) {
       type={type}
       onClick={onClick}
       whileHover={{ scale: 1.02 }}
+      aria-label={ariaLabel}
     >
       {icon}
       <span className={textStyles}>{label}</span>

@@ -20,12 +20,14 @@ function ActionForm({ generateQuote, changeTag }) {
         onClick={addFavorite}
         type="button"
         disabled={favoriteButton.isInFav}
+        ariaLabel="Add to favorite"
       />
       <div className="grid grid-cols-2 gap-4">
         <select
           className="capitalize hover:cursor-pointer text-center bg-[var(--select-bg)] hover:bg-[var(--select-bg-hover)] text-[var(--select-text)] border border-[var(--select-border)] focus:border-[var(--select-border-focus)] duration-300 rounded"
           name="quote_tag"
           onChange={(e) => changeTag(e)}
+          data-testid="tag-selector"
         >
           {primaryTags.map((tag) => (
             <option
@@ -36,7 +38,11 @@ function ActionForm({ generateQuote, changeTag }) {
             </option>
           ))}
         </select>
-        <Button label="New quote" type="submit" />
+        <Button
+          label="New quote"
+          type="submit"
+          ariaLabel="Generate new quote"
+        />
       </div>
     </form>
   );

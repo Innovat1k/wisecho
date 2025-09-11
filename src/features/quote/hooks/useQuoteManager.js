@@ -59,7 +59,7 @@ export const useQuoteManager = () => {
     init();
   }, []);
 
-  // Change tag option to filte quote generation
+  // Change tag option to filter quote generation
   const changeTag = (e) => {
     setTagOption(e.target.value);
   };
