@@ -33,11 +33,15 @@ export const useTheme = () => {
   // Function to cancel theme change
   const cancelThemeChange = (e) => {
     e.preventDefault();
-    setThemeState({
-      current: themeState.current,
-      selected: "",
-    });
-    setTheme(themeState.current);
+
+    if (themeState.current !== "") {
+      setThemeState({
+        current: themeState.current,
+        selected: "",
+      });
+      setTheme(themeState.current);
+    }
+
     setIsThemeCardOpen(!isThemeCardOpen);
   };
 
