@@ -49,6 +49,10 @@ It also includes a **robust test suite** using **Vitest** and **React Testing Li
 
 ---
 
+## 🗺️ Roadmap
+
+For planned features and future improvements, see [ROADMAP.md](./ROADMAP.md).
+
 ## 🔧 Technologies Used
 
 - [React.js](https://reactjs.org/)

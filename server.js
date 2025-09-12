@@ -25,7 +25,7 @@ app.get("/api/qotd", async (req, res) => {
     });
     const data = await response.json();
     res.json(data);
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: "Erreur lors de la récupération du QOTD." });
   }
 });
@@ -43,7 +43,7 @@ app.get("/api/quotes", async (req, res) => {
     });
     const data = await response.json();
     res.json(data);
-  } catch (err) {
+  } catch {
     res
       .status(500)
       .json({ error: "Erreur lors de la récupération des citations." });
@@ -69,7 +69,7 @@ app.get("/api/quotes/random", async (req, res) => {
     } else {
       res.status(404).json({ error: "Aucune citation trouvée." });
     }
-  } catch (err) {
+  } catch {
     res
       .status(500)
       .json({ error: "Erreur lors de la récupération aléatoire." });

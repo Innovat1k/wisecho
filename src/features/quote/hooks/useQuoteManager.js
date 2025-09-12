@@ -12,14 +12,14 @@ import { useAtom } from "jotai";
 import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher";
 import { quoteAtom, statisticAtom, tagAtom } from "../../../shared/atoms/atoms";
 import { useEffect, useRef } from "react";
-import { filterQuote, randomNum } from "../../../shared/utils/utils";
+import { randomNum } from "../../../shared/utils/utils";
 
 export const useQuoteManager = () => {
   // Global state for current quote
   const [quote, setQuote] = useAtom(quoteAtom);
 
   // Global state for current quote
-  const [statistic, setStatistic] = useAtom(statisticAtom);
+  const [, setStatistic] = useAtom(statisticAtom);
 
   // Fetch logic from dedicated hook
   const { isLoading, setLoading, hasError, fetchQuote } = useQuoteFetcher();
@@ -34,6 +34,8 @@ export const useQuoteManager = () => {
    * Load initial quote on component mount
    * Skips fetch if quote already exists in global state
    */
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // 🛡️ Prevent double fetch after loading
     if (hasFetched.current) return;

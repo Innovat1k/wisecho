@@ -4,20 +4,22 @@ import {
   quoteAtom,
   statisticAtom,
 } from "../../../shared/atoms/atoms";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const useFavoriteQuote = () => {
   const current = useAtomValue(quoteAtom);
   const [favQuotes, setFavQuotes] = useAtom(favoriteQuotesAtom);
-  const [statistic, setStatistic] = useAtom(statisticAtom);
+  const [, setStatistic] = useAtom(statisticAtom);
   const [favoriteButton, setFavoriteButton] = useState({
     isInFav: false,
     label: "Add to favorites",
   });
 
   // Check if the current quote is already in the favorites list
-  const isAlreadyFavorite = () =>
-    favQuotes.some((item) => item.id === current?.id);
+  const isAlreadyFavorite = useCallback(
+    () => favQuotes.some((item) => item.id === current?.id),
+    [favQuotes, current]
+  );
 
   // Add the current quote to favorite
   const isEmpty = () => {
@@ -50,7 +52,7 @@ export const useFavoriteQuote = () => {
             label: "Add to favorite",
           }
     );
-  }, [favQuotes, current]);
+  }, [isAlreadyFavorite, current]);
 
   // Remove a quote by ID from the favorites list
   const removeFavorite = (quote) => {

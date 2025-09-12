@@ -1,4 +1,3 @@
-import { describe } from "vitest";
 import { beforeEach, describe, it, expect, vi } from "vitest";
 import { useResponsive } from "../useResponsive";
 import { renderHook, act } from "@testing-library/react";
