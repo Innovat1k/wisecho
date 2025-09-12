@@ -20,13 +20,23 @@ export const useFavoriteQuote = () => {
     favQuotes.some((item) => item.id === current?.id);
 
   // Add the current quote to favorite
+  const isEmpty = () => {
+    return current && Object.keys(current).length === 0;
+  };
+
+  console.log("current", current, "isEmpty", isEmpty());
+
   const addFavorite = () => {
-    if (isAlreadyFavorite()) return;
+    if (!current || isEmpty() || isAlreadyFavorite()) {
+      return;
+    }
+
     setFavQuotes((prev) => [...prev, current]);
     setStatistic((prev) => ({
       ...prev,
       favoritesCount: prev.favoritesCount + 1,
     }));
+    console.log(current);
   };
 
   // Update the button state (label + status) when favorites or current quote change
