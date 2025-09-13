@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { describe, expect } from "vitest";
-import AppDetails from "../AppDetails";
+import AppDetails from "./AppDetails";
 import userEvent from "@testing-library/user-event";
 import { usePersistStorage } from "../../hooks/usePersistStorage";
 

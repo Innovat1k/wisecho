@@ -9,7 +9,7 @@
  */
 
 import { useAtom } from "jotai";
-import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher";
+import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher/useQuoteFetcher"; 
 import { quoteAtom, statisticAtom, tagAtom } from "../../../shared/atoms/atoms";
 import { useEffect, useRef } from "react";
 import { randomNum } from "../../../shared/utils/utils";

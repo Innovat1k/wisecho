@@ -26,8 +26,6 @@ export const useFavoriteQuote = () => {
     return current && Object.keys(current).length === 0;
   };
 
-  console.log("current", current, "isEmpty", isEmpty());
-
   const addFavorite = () => {
     if (!current || isEmpty() || isAlreadyFavorite()) {
       return;

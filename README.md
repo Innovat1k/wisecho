@@ -106,6 +106,7 @@ npm run test
 
 ```bash
 src/
+├── tests/                   # Global tests (App.test.jsx, etc.)
 ├── features/                # App-specific features
 │   ├── favorites/           # Favorites management
 │   │   ├── components/      # Components related to favorites
@@ -115,17 +116,18 @@ src/
 │       └── hooks/
 │
 ├── shared/                  # Reusable code across the project
+│   ├──__tests__/               # Shared/util test helpers
 │   ├── atoms/               # Global state management (Jotai)
 │   ├── components/          # Generic UI components
-│   ├── hooks/               # Generic hooks (useResponsive, etc.)
-│   ├── themes/              # Global themes and styles
-│   └── tests/               # Shared/util test helpers
+│   ├── hooks/               # Generic hooks (useResponsive, useQuoteFetcher, etc.)
+│   └── themes/              # Global themes and styles
 │
-├── tests/                   # Global tests (App.data.test.jsx, etc.)
 │
 ├── App.jsx                  # Main entry point of the app
 └── main.jsx                 # Bootstrap React
 
+server/
+└── index.js                 # Backend server entry point
 ```
 
 ---

@@ -64,7 +64,7 @@ function FavoriteQuotes() {
               className="my-8 italic text-[var(--no-favorites-text)]"
               role="alert"
             >
-              “ Your favorites list is still waiting for its first quote. ”
+              Your favorites list is still waiting for its first quote.
             </motion.p>
           )}
         </AnimatePresence>

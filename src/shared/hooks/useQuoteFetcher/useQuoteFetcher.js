@@ -8,7 +8,7 @@
 
 import { useAtomValue } from "jotai";
 import { useState } from "react";
-import { tagAtom } from "../atoms/atoms";
+import { tagAtom } from "../../atoms/atoms";
 
 // Base url for backend environment
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;

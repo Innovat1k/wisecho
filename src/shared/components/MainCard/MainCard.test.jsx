@@ -6,7 +6,7 @@ vi.mock("../../../features/quote/hooks/useQuoteManager", () => ({
   useQuoteManager: vi.fn(),
 }));
 
-import MainCard from "../MainCard";
+import MainCard from "./MainCard";
 import { useQuoteManager } from "../../../features/quote/hooks/useQuoteManager";
 
 describe("MainCard", () => {

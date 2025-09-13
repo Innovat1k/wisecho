@@ -4,7 +4,7 @@ import { describe, expect } from "vitest";
 vi.mock("../../hooks/useResponsive", () => ({ useResponsive: vi.fn() }));
 vi.mock("../../hooks/useShowDetails", () => ({ useShowDetails: vi.fn() }));
 
-import AppLayout from "../AppLayout";
+import AppLayout from "./AppLayout";
 import { useResponsive } from "../../hooks/useResponsive";
 import { useShowDetails } from "../../hooks/useShowDetails";
 

@@ -6,7 +6,7 @@ import {
   themeAtom,
 } from "../../atoms/atoms";
 import { act, renderHook } from "@testing-library/react";
-import { usePersistStorage } from "../usePersistStorage";
+import { usePersistStorage } from "./usePersistStorage";
 
 describe("usePersistStorage", () => {
   it("should persist data in localStorage on change", () => {
@@ -39,10 +39,7 @@ describe("usePersistStorage", () => {
   it("should reset all saved data", () => {
     const mockTheme = "warm";
     const mockStatistic = { generatedCount: 5, favoritesCount: 2 };
-    const removeItemSpy = vi.spyOn(
-      window.localStorage.__proto__,
-      "removeItem"
-    );
+    const removeItemSpy = vi.spyOn(window.localStorage.__proto__, "removeItem");
 
     const mockFavQuotes = [
       {

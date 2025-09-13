@@ -1,5 +1,5 @@
 import { LuX } from "react-icons/lu";
-import Button from "../../../shared/components/Button";
+import Button from "../../../shared/components/Button/Button";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAtomValue } from "jotai";
 import { themeAtom } from "../../../shared/atoms/atoms";

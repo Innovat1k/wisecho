@@ -3,6 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "author": "Heïdi Al Ihmid Jeremia (Innovat1k)",
+  "description": "An interactive quote generator with theme preview, favorite management, and API integration, built to demonstrate React.js and modern frontend techniques.",
   "scripts": {
     "dev": "vite",
     "backend": "node server/index.js",

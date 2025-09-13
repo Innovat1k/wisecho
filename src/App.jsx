@@ -1,7 +1,7 @@
 import ThemeCard from "./features/theme/components/ThemeCard";
 import { useTheme } from "./features/theme/hooks/useTheme";
-import { usePersistStorage } from "./shared/hooks/usePersistStorage";
-import AppLayout from "./shared/components/AppLayout";
+import { usePersistStorage } from "./shared/hooks/usePersistStorage/usePersistStorage";
+import AppLayout from "./shared/components/AppLayout/AppLayout";
 
 function App() {
   const { isThemeCardOpen, toggleThemeCard, themeActions } = useTheme();
