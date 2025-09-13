@@ -4,7 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"nodemon server.js\"",
+    "dev": "vite",
+    "backend": "node server/index.js",
+    "backend:dev": "nodemon server/index.js",
+    "dev:all": "concurrently \"npm run backend:dev\" \"npm run dev\"",
     "build": "vite build",
     "lint": "eslint . --ext .js,.jsx",
     "lint:fix": "eslint . --ext .js,.jsx --fix",
