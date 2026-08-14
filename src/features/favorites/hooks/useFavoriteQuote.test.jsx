@@ -10,7 +10,7 @@ import {
 import {
   mockFavoriteQuotes,
   mockQuote,
-} from "../../../shared/tests/mockQuotes";
+} from "../../../shared/__tests__/mockQuotes";
 
 describe("useFavoriteQuote", () => {
   let store;

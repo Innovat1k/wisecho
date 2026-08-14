@@ -3,7 +3,7 @@ import { beforeEach, describe, expect } from "vitest";
 import FavoriteQuotes from "./FavoriteQuotes";
 import { useFavoriteQuote } from "../hooks/useFavoriteQuote";
 import userEvent from "@testing-library/user-event";
-import { mockFavorites } from "../../../shared/tests/mockQuotes";
+import { mockFavorites } from "../../../shared/__tests__/mockQuotes";
 
 vi.mock("../hooks/useFavoriteQuote", () => ({
   useFavoriteQuote: vi.fn(),

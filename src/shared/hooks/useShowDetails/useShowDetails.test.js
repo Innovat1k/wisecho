@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import { describe } from "vitest";
-import { useShowDetails } from "../useShowDetails";
+import { useShowDetails } from "../useShowDetails/useShowDetails";
 
 describe("useShowDetails", () => {
   it("should initially have showDetails as false", () => {

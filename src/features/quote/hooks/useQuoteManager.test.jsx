@@ -1,22 +1,29 @@
-import { act, renderHook, waitFor } from "@testing-library/react";
-import { beforeEach, describe, expect, vi } from "vitest";
-import { useQuoteManager } from "./useQuoteManager";
+import { act, renderHook } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { createStore, Provider } from "jotai";
+import { useQuoteManager } from "./useQuoteManager";
 import { quoteAtom, statisticAtom, tagAtom } from "../../../shared/atoms/atoms";
-import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher";
-import { mockLifeQuotes, mockQuote } from "../../../shared/tests/mockQuotes";
+import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher/useQuoteFetcher";
+import {
+  mockLifeQuotes,
+  mockQuote,
+} from "../../../shared/__tests__/mockQuotes";
 
-vi.mock("../../../shared/hooks/useQuoteFetcher", () => ({
+vi.mock("../../../shared/hooks/useQuoteFetcher/useQuoteFetcher", () => ({
   useQuoteFetcher: vi.fn(),
 }));
 
 const mockUseQuoteFetcher = (mockData) => {
+  const fetchQuote = vi.fn().mockResolvedValue(mockData);
+
   useQuoteFetcher.mockReturnValue({
-    fetchQuote: vi.fn().mockResolvedValue(mockData),
+    fetchQuote,
     isLoading: false,
     hasError: false,
     setLoading: vi.fn(),
   });
+
+  return fetchQuote;
 };
 
 describe("useQuoteManager", () => {
@@ -24,31 +31,40 @@ describe("useQuoteManager", () => {
   let Wrapper;
 
   beforeEach(() => {
+    vi.clearAllMocks();
+
     store = createStore();
+
     Wrapper = ({ children }) => <Provider store={store}>{children}</Provider>;
   });
 
-  it("should allow quote tag changing  before generation", () => {
-    const mockTag = "random";
-    mockUseQuoteFetcher(mockQuote);
+  it("should allow quote tag changing before generation", () => {
+    const fetchQuote = mockUseQuoteFetcher(mockQuote);
 
-    store.set(tagAtom, mockTag);
+    store.set(tagAtom, "random");
 
     const { result } = renderHook(() => useQuoteManager(), {
       wrapper: Wrapper,
     });
 
-    act(() => result.current.changeTag({ target: { value: "peace" } }));
+    act(() => {
+      result.current.changeTag({
+        target: { value: "peace" },
+      });
+    });
+
     expect(store.get(tagAtom)).toBe("peace");
+    expect(fetchQuote).toHaveBeenCalledTimes(1);
   });
 
-  it("should generate new random quote", async () => {
-    mockUseQuoteFetcher(mockQuote);
-
-    const fakeEvent = { preventDefault: vi.fn() };
+  it("should generate a new random quote", async () => {
+    const fetchQuote = mockUseQuoteFetcher(mockQuote);
 
     const mockTag = "random";
-    const mockStatistic = { generatedCount: 0, favoritesCount: 0 };
+    const mockStatistic = {
+      generatedCount: 0,
+      favoritesCount: 0,
+    };
 
     store.set(tagAtom, mockTag);
     store.set(statisticAtom, mockStatistic);
@@ -63,22 +79,22 @@ describe("useQuoteManager", () => {
     });
 
     await act(async () => {
-      await result.current.generateQuote(fakeEvent);
+      await result.current.generateQuote();
     });
 
+    expect(fetchQuote).toHaveBeenCalledWith();
     expect(result.current.quote).toEqual(mockQuote);
-    await waitFor(() => {
-      expect(store.get(statisticAtom).generatedCount).toBe(1);
-    });
+    expect(store.get(statisticAtom).generatedCount).toBe(1);
   });
 
-  it("should generate quote with the selected tag", async () => {
-    mockUseQuoteFetcher(mockLifeQuotes);
-
-    const fakeEvent = { preventDefault: vi.fn() };
+  it("should generate a quote with the selected tag", async () => {
+    const fetchQuote = mockUseQuoteFetcher(mockLifeQuotes);
 
     const mockTag = "growth";
-    const mockStatistic = { generatedCount: 1, favoritesCount: 0 };
+    const mockStatistic = {
+      generatedCount: 1,
+      favoritesCount: 0,
+    };
 
     store.set(quoteAtom, mockQuote);
     store.set(tagAtom, mockTag);
@@ -88,9 +104,12 @@ describe("useQuoteManager", () => {
       wrapper: Wrapper,
     });
 
-    await act(async () => await result.current.generateQuote(fakeEvent));
+    await act(async () => {
+      await result.current.generateQuote();
+    });
 
+    expect(fetchQuote).toHaveBeenCalledWith("growth");
     expect(result.current.quote.tags).toContain("life");
-    expect(store.get(statisticAtom).generatedCount).toEqual(2);
+    expect(store.get(statisticAtom).generatedCount).toBe(2);
   });
 });

@@ -1,10 +1,12 @@
 import { beforeEach, describe, expect } from "vitest";
-import { useResponsive } from "../shared/hooks/useResponsive";
+import { useResponsive } from "../shared/hooks/useResponsive/useResponsive";
 import { render, screen } from "@testing-library/react";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
 
-vi.mock("../shared/hooks/useResponsive", () => ({ useResponsive: vi.fn() }));
+vi.mock("../shared/hooks/useResponsive/useResponsive", () => ({
+  useResponsive: vi.fn(),
+}));
 
 const renderComponent = () => {
   render(<App />);
@@ -44,7 +46,7 @@ describe("App", () => {
       await user.click(
         screen.queryByRole("button", {
           name: /close details/i,
-        })
+        }),
       );
       expect(await screen.findByRole("heading", { level: 1 })).toBeVisible();
     });
