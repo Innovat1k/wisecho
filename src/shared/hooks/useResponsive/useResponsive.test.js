@@ -1,5 +1,5 @@
 import { beforeEach, describe, it, expect, vi } from "vitest";
-import { useResponsive } from "../useResponsive";
+import { useResponsive } from "../useResponsive/useResponsive";
 import { renderHook, act } from "@testing-library/react";
 
 describe("useResponsive", () => {

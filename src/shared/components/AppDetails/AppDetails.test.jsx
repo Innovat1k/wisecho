@@ -2,9 +2,9 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { describe, expect } from "vitest";
 import AppDetails from "./AppDetails";
 import userEvent from "@testing-library/user-event";
-import { usePersistStorage } from "../../hooks/usePersistStorage";
+import { usePersistStorage } from "../../hooks/usePersistStorage/usePersistStorage";
 
-vi.mock("../../hooks/usePersistStorage", () => ({
+vi.mock("../../hooks/usePersistStorage/usePersistStorage", () => ({
   usePersistStorage: vi.fn(),
 }));
 

@@ -9,39 +9,45 @@
  */
 
 import { useAtom } from "jotai";
-import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher/useQuoteFetcher"; 
-import { quoteAtom, statisticAtom, tagAtom } from "../../../shared/atoms/atoms";
 import { useEffect, useRef } from "react";
+import {
+  quoteAtom,
+  statisticAtom,
+  tagAtom,
+} from "../../../shared/atoms/atoms";
 import { randomNum } from "../../../shared/utils/utils";
+import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher/useQuoteFetcher";
 
 export const useQuoteManager = () => {
   // Global state for current quote
   const [quote, setQuote] = useAtom(quoteAtom);
 
-  // Global state for current quote
+  // Global statistics state
   const [, setStatistic] = useAtom(statisticAtom);
 
   // Fetch logic from dedicated hook
-  const { isLoading, setLoading, hasError, fetchQuote } = useQuoteFetcher();
+  const {
+    isLoading,
+    setLoading,
+    hasError,
+    fetchQuote,
+  } = useQuoteFetcher();
 
-  // Ref to prevent double fetch (especially in React 18 StrictMode)
+  // Prevent duplicate initial fetch, especially in React StrictMode
   const hasFetched = useRef(false);
 
-  // State for current tag selection
+  // Global state for current tag selection
   const [tagOption, setTagOption] = useAtom(tagAtom);
 
   /**
-   * Load initial quote on component mount
-   * Skips fetch if quote already exists in global state
+   * Load initial quote.
+   * Skips fetching if a quote is already available.
    */
-
-// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    // 🛡️ Prevent double fetch after loading
     if (hasFetched.current) return;
 
-    // Skip fetch if quote with ID is already available
     if (quote?.id) {
+      hasFetched.current = true;
       setLoading(false);
       return;
     }
@@ -50,35 +56,52 @@ export const useQuoteManager = () => {
 
     const init = async () => {
       const data = await fetchQuote(tagOption);
+
       if (data) {
         setQuote(data);
+
         setStatistic((prev) => ({
           ...prev,
           generatedCount: prev.generatedCount + 1,
         }));
       }
     };
-    init();
-  }, []);
 
-  // Change tag option to filter quote generation
+    init();
+  }, [
+    fetchQuote,
+    quote?.id,
+    setLoading,
+    setQuote,
+    setStatistic,
+    tagOption,
+  ]);
+
+  /**
+   * Change tag option used for quote generation.
+   */
   const changeTag = (e) => {
     setTagOption(e.target.value);
   };
 
   /**
-   * Generates a new quote when triggered by user (button click)
-   * @param e - Optional event object (e.g., form submission)
+   * Generate a new quote when triggered by the user.
    */
   const generateQuote = async (e) => {
-    e.preventDefault();
+    e?.preventDefault();
+
     const data =
-      tagOption === "random" ? await fetchQuote() : await fetchQuote(tagOption);
-    if (data) {
-      const tempQuote = data.quotes;
       tagOption === "random"
-        ? setQuote(data)
-        : setQuote(tempQuote[randomNum(tempQuote)]);
+        ? await fetchQuote()
+        : await fetchQuote(tagOption);
+
+    if (data) {
+      if (tagOption === "random") {
+        setQuote(data);
+      } else {
+        const tempQuote = data.quotes;
+        setQuote(tempQuote[randomNum(tempQuote)]);
+      }
 
       setStatistic((prev) => ({
         ...prev,
@@ -87,13 +110,13 @@ export const useQuoteManager = () => {
     }
   };
 
-  /**
-   *- hasError: error object if fetch fails
-   * Returns:
-   * - quote: current quote object
-   * - generateQuote: function to load a new quote
-   * - isLoading: boolean indicating loading state
-   */
-
-  return { quote, generateQuote, status: { isLoading, hasError }, changeTag };
+  return {
+    quote,
+    generateQuote,
+    status: {
+      isLoading,
+      hasError,
+    },
+    changeTag,
+  };
 };

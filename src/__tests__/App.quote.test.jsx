@@ -4,15 +4,19 @@ import App from "../App";
 import userEvent from "@testing-library/user-event";
 import { createStore, Provider } from "jotai";
 import { quoteAtom, statisticAtom } from "../shared/atoms/atoms";
-import { useResponsive } from "../shared/hooks/useResponsive";
-import { useQuoteFetcher } from "../shared/hooks/useQuoteFetcher";
-import { mockFetchedQuote, mockInspirationQuotes, mockQuote } from "../shared/tests/mockQuotes";
+import { useResponsive } from "../shared/hooks/useResponsive/useResponsive";
+import { useQuoteFetcher } from "../shared/hooks/useQuoteFetcher/useQuoteFetcher";
+import {
+  mockFetchedQuote,
+  mockInspirationQuotes,
+  mockQuote,
+} from "../shared/__tests__/mockQuotes";
 
-vi.mock("../shared/hooks/useResponsive", () => ({
+vi.mock("../shared/hooks/useResponsive/useResponsive", () => ({
   useResponsive: vi.fn(),
 }));
 
-vi.mock("../shared/hooks/useQuoteFetcher", () => ({
+vi.mock("../shared/hooks/useQuoteFetcher/useQuoteFetcher", () => ({
   useQuoteFetcher: vi.fn(),
 }));
 
@@ -51,8 +55,8 @@ describe("App", () => {
       await waitFor(() => {
         expect(
           screen.getByText(
-            /the future belongs to those who believe in the beauty of their dreams/i
-          )
+            /the future belongs to those who believe in the beauty of their dreams/i,
+          ),
         ).toBeVisible();
         expect(screen.getByTestId(/tag-0/i)).toHaveTextContent("future");
         expect(screen.getByTestId(/tag-1/i)).toHaveTextContent("dreams");
@@ -79,7 +83,7 @@ describe("App", () => {
       await user.click(screen.getByRole("button", { name: /new quote/i }));
 
       const inspirationTag = within(
-        screen.getByTestId(/quote tags/i)
+        screen.getByTestId(/quote tags/i),
       ).getByText("inspiration");
 
       expect(inspirationTag).toBeVisible();

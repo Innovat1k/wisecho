@@ -2,11 +2,13 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe } from "vitest";
 import App from "../App";
-import { useResponsive } from "../shared/hooks/useResponsive";
+import { useResponsive } from "../shared/hooks/useResponsive/useResponsive";
 import { createStore, Provider } from "jotai";
 import { themeAtom } from "../shared/atoms/atoms";
 
-vi.mock("../shared/hooks/useResponsive", () => ({ useResponsive: vi.fn() }));
+vi.mock("../shared/hooks/useResponsive/useResponsive", () => ({
+  useResponsive: vi.fn(),
+}));
 
 let user;
 let Wrapper;
@@ -25,7 +27,7 @@ describe("App", () => {
       render(<App />);
 
       await user.click(
-        screen.getByRole("button", { name: /open theme menu/i })
+        screen.getByRole("button", { name: /open theme menu/i }),
       );
 
       const theme_menu_title = await screen.findByText("Change theme");
@@ -33,8 +35,8 @@ describe("App", () => {
       expect(theme_menu_title).toBeVisible();
       expect(
         await screen.findByText(
-          /soft & soothing|warm & natural|modern & professional/i
-        )
+          /soft & soothing|warm & natural|modern & professional/i,
+        ),
       ).toBeVisible();
     });
 
@@ -62,7 +64,7 @@ describe("App", () => {
       render(<App />, { wrapper: Wrapper });
 
       await user.click(
-        screen.getByRole("button", { name: /open theme menu/i })
+        screen.getByRole("button", { name: /open theme menu/i }),
       );
 
       await waitFor(() => {
@@ -70,7 +72,7 @@ describe("App", () => {
       });
 
       await user.click(
-        screen.getByRole("button", { name: /preview soft theme/i })
+        screen.getByRole("button", { name: /preview soft theme/i }),
       );
 
       await user.click(screen.getByRole("button", { name: /apply theme/i }));
@@ -82,11 +84,11 @@ describe("App", () => {
       render(<App />, { wrapper: Wrapper });
 
       await user.click(
-        screen.getByRole("button", { name: /open theme menu/i })
+        screen.getByRole("button", { name: /open theme menu/i }),
       );
 
       await user.click(
-        screen.getByRole("button", { name: /preview warm theme/i })
+        screen.getByRole("button", { name: /preview warm theme/i }),
       );
 
       await waitFor(() => {
