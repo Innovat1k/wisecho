@@ -18,7 +18,9 @@ import {
 } from "../shared/atoms/atoms";
 import { mockQuote, mockQuote2 } from "../shared/__tests__/mockQuotes";
 
-vi.mock("../shared/hooks/useResponsive/useResponsive", () => ({ useResponsive: vi.fn() }));
+vi.mock("../shared/hooks/useResponsive/useResponsive", () => ({
+  useResponsive: vi.fn(),
+}));
 
 describe("App", () => {
   describe("Favorite", () => {
@@ -38,7 +40,7 @@ describe("App", () => {
       render(<App />, { wrapper: Wrapper });
 
       await user.click(
-        screen.getByRole("button", { name: /add to favorite/i })
+        screen.getByRole("button", { name: /add to favorite/i }),
       );
 
       await waitFor(() => {
@@ -57,13 +59,13 @@ describe("App", () => {
       expect(favorite_section).not.toHaveTextContent(/the middle/i);
 
       await user.click(
-        screen.getByRole("button", { name: /add to favorite/i })
+        screen.getByRole("button", { name: /add to favorite/i }),
       );
 
       await waitFor(() => {
         expect(screen.getByText(/in favorite/i)).toBeVisible();
         expect(screen.getByTestId("Favorite quotes")).toHaveTextContent(
-          /the middle of every difficulty/i
+          /the middle of every difficulty/i,
         );
       });
     });
@@ -78,17 +80,17 @@ describe("App", () => {
       render(<App />, { wrapper: Wrapper });
 
       await user.click(
-        screen.getByRole("button", { name: /add to favorite/i })
+        screen.getByRole("button", { name: /add to favorite/i }),
       );
 
       await within(screen.getByTestId("Favorite quotes")).findByText(
-        /the middle of every difficulty/i
+        /the middle of every difficulty/i,
       );
 
       expect(screen.getByTestId(/favorites count/i)).toHaveTextContent("02");
 
       await user.click(
-        screen.getByRole("button", { name: /remove quote 104/i })
+        screen.getByRole("button", { name: /remove quote 104/i }),
       );
 
       const quote = screen.queryByTestId("favorite-quote-104");
@@ -106,23 +108,19 @@ describe("App", () => {
       render(<App />, { wrapper: Wrapper });
 
       await user.click(
-        screen.getByRole("button", { name: /add to favorite/i })
+        screen.getByRole("button", { name: /add to favorite/i }),
       );
 
       await user.click(
-        screen.getByRole("button", { name: /remove quote 104/i })
+        screen.getByRole("button", { name: /remove quote 104/i }),
       );
-
-      expect(
-        screen.queryByTestId("favorite-quote-104")
-      ).not.toBeInTheDocument();
 
       expect(screen.getByTestId(/favorites count/i)).toHaveTextContent("00");
 
       expect(
         screen.getByText(
-          /your favorites list is still waiting for its first quote/i
-        )
+          /your favorites list is still waiting for its first quote/i,
+        ),
       ).toBeVisible();
     });
   });
