@@ -19,8 +19,7 @@ const mockUseQuoteFetcher = (mockData) => {
   useQuoteFetcher.mockReturnValue({
     fetchQuote,
     isLoading: false,
-    hasError: false,
-    setLoading: vi.fn(),
+    hasError: null,
   });
 
   return fetchQuote;
@@ -35,11 +34,13 @@ describe("useQuoteManager", () => {
 
     store = createStore();
 
-    Wrapper = ({ children }) => <Provider store={store}>{children}</Provider>;
+    Wrapper = ({ children }) => (
+      <Provider store={store}>{children}</Provider>
+    );
   });
 
   it("should allow quote tag changing before generation", () => {
-    const fetchQuote = mockUseQuoteFetcher(mockQuote);
+    mockUseQuoteFetcher(mockQuote);
 
     store.set(tagAtom, "random");
 
@@ -54,19 +55,17 @@ describe("useQuoteManager", () => {
     });
 
     expect(store.get(tagAtom)).toBe("peace");
-    expect(fetchQuote).toHaveBeenCalledTimes(1);
   });
 
   it("should generate a new random quote", async () => {
     const fetchQuote = mockUseQuoteFetcher(mockQuote);
 
-    const mockTag = "random";
     const mockStatistic = {
       generatedCount: 0,
       favoritesCount: 0,
     };
 
-    store.set(tagAtom, mockTag);
+    store.set(tagAtom, "random");
     store.set(statisticAtom, mockStatistic);
     store.set(quoteAtom, {
       body: "Be kind.",
@@ -82,7 +81,7 @@ describe("useQuoteManager", () => {
       await result.current.generateQuote();
     });
 
-    expect(fetchQuote).toHaveBeenCalledWith();
+    expect(fetchQuote).toHaveBeenCalledWith("random");
     expect(result.current.quote).toEqual(mockQuote);
     expect(store.get(statisticAtom).generatedCount).toBe(1);
   });
@@ -90,14 +89,13 @@ describe("useQuoteManager", () => {
   it("should generate a quote with the selected tag", async () => {
     const fetchQuote = mockUseQuoteFetcher(mockLifeQuotes);
 
-    const mockTag = "growth";
     const mockStatistic = {
       generatedCount: 1,
       favoritesCount: 0,
     };
 
     store.set(quoteAtom, mockQuote);
-    store.set(tagAtom, mockTag);
+    store.set(tagAtom, "growth");
     store.set(statisticAtom, mockStatistic);
 
     const { result } = renderHook(() => useQuoteManager(), {

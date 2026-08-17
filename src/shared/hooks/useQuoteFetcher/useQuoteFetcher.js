@@ -20,23 +20,25 @@ const API_FILTERED = `${BASE_URL}/api/quotes`;
 
 export const useQuoteFetcher = () => {
   const [quotesData, setQuotesData] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  /**
-   * Fetches a random quote or filtered quotes.
-   */
   const fetchQuote = useCallback(
     async (filter = "inspiration", type = "tag") => {
       setLoading(true);
       setError(null);
 
       try {
-        const url = filter === "random" ? API_URL : API_FILTERED;
+        const isRandom = filter === "random";
+        const url = isRandom ? API_URL : API_FILTERED;
 
-        const response = await fetch(
-          `${url}?filter=${encodeURIComponent(filter)}&type=${type}`
-        );
+        const queryParams = isRandom
+          ? ""
+          : `?filter=${encodeURIComponent(filter)}&type=${encodeURIComponent(
+              type,
+            )}`;
+
+        const response = await fetch(`${url}${queryParams}`);
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -49,18 +51,18 @@ export const useQuoteFetcher = () => {
         return data;
       } catch (error) {
         setError(error);
+        throw error;
       } finally {
         setLoading(false);
       }
     },
-    []
+    [],
   );
 
   return {
     quotesData,
     isLoading: loading,
     hasError: error,
-    setLoading,
     fetchQuote,
   };
 };
