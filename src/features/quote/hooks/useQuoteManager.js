@@ -14,9 +14,9 @@ import {
   quoteAtom,
   statisticAtom,
   tagAtom,
-} from "../../../shared/atoms/atoms";
+} from "../../../atoms/atoms";
 import { randomNum } from "../../../shared/utils/utils";
-import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher/useQuoteFetcher";
+import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher";
 
 export const useQuoteManager = () => {
   // Global state for current quote

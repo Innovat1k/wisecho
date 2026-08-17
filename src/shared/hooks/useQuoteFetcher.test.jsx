@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { useQuoteFetcher } from "../useQuoteFetcher/useQuoteFetcher";
+import { useQuoteFetcher } from "./useQuoteFetcher";
 
 beforeEach(() => {
   global.fetch = vi.fn();

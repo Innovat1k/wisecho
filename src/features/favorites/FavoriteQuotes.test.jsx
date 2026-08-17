@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect } from "vitest";
 import FavoriteQuotes from "./FavoriteQuotes";
-import { useFavoriteQuote } from "../hooks/useFavoriteQuote";
+import { useFavoriteQuote } from "./hooks/useFavoriteQuote";
 import userEvent from "@testing-library/user-event";
-import { mockFavorites } from "../../../shared/__tests__/mockQuotes";
+import { mockFavorites } from "../../__tests__/mockQuotes";
 
-vi.mock("../hooks/useFavoriteQuote", () => ({
+vi.mock("./hooks/useFavoriteQuote", () => ({
   useFavoriteQuote: vi.fn(),
 }));
 

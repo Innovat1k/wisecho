@@ -2,11 +2,11 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe } from "vitest";
 import App from "../App";
-import { useResponsive } from "../shared/hooks/useResponsive/useResponsive";
+import { useResponsive } from "../shared/hooks/useResponsive";
 import { createStore, Provider } from "jotai";
-import { themeAtom } from "../shared/atoms/atoms";
+import { themeAtom } from "../atoms/atoms";
 
-vi.mock("../shared/hooks/useResponsive/useResponsive", () => ({
+vi.mock("../shared/hooks/useResponsive", () => ({
   useResponsive: vi.fn(),
 }));
 

@@ -7,18 +7,14 @@ import {
 } from "@testing-library/react";
 import { beforeEach, describe, expect } from "vitest";
 import App from "../App";
-import { useResponsive } from "../shared/hooks/useResponsive/useResponsive";
+import { useResponsive } from "../shared/hooks/useResponsive";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "jotai";
 import { createStore } from "jotai";
-import {
-  favoriteQuotesAtom,
-  quoteAtom,
-  statisticAtom,
-} from "../shared/atoms/atoms";
-import { mockQuote, mockQuote2 } from "../shared/__tests__/mockQuotes";
+import { favoriteQuotesAtom, quoteAtom, statisticAtom } from "../atoms/atoms";
+import { mockQuote, mockQuote2 } from "./mockQuotes";
 
-vi.mock("../shared/hooks/useResponsive/useResponsive", () => ({
+vi.mock("../shared/hooks/useResponsive", () => ({
   useResponsive: vi.fn(),
 }));
 

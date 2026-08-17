@@ -1,8 +1,8 @@
 import { LuX } from "react-icons/lu";
-import Button from "../../../shared/components/Button/Button";
+import Button from "../../shared/components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAtomValue } from "jotai";
-import { themeAtom } from "../../../shared/atoms/atoms";
+import { themeAtom } from "../../atoms/atoms";
 
 function ThemeCard({ isOpened, themeActions }) {
   const themesList = ["soft", "warm", "modern"];

@@ -1,6 +1,6 @@
 import { LuTrash } from "react-icons/lu";
 import { AnimatePresence, motion } from "framer-motion";
-import { useFavoriteQuote } from "../hooks/useFavoriteQuote";
+import { useFavoriteQuote } from "./hooks/useFavoriteQuote";
 
 function FavoriteQuotes() {
   const { favQuotes, removeFavorite } = useFavoriteQuote();

@@ -3,7 +3,7 @@ import {
   favoriteQuotesAtom,
   quoteAtom,
   statisticAtom,
-} from "../../../shared/atoms/atoms";
+} from "../../../atoms/atoms";
 import { useCallback, useEffect, useState } from "react";
 
 export const useFavoriteQuote = () => {

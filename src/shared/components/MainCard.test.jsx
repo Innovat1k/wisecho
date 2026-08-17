@@ -2,12 +2,12 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
 
-vi.mock("../../../features/quote/hooks/useQuoteManager", () => ({
+vi.mock("../../features/quote/hooks/useQuoteManager", () => ({
   useQuoteManager: vi.fn(),
 }));
 
 import MainCard from "./MainCard";
-import { useQuoteManager } from "../../../features/quote/hooks/useQuoteManager";
+import { useQuoteManager } from "../../features/quote/hooks/useQuoteManager";
 
 describe("MainCard", () => {
   const openDetails = vi.fn();
