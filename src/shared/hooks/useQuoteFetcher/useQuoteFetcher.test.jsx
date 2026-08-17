@@ -1,5 +1,5 @@
 import { act, renderHook } from "@testing-library/react";
-import { beforeEach, describe, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useQuoteFetcher } from "../useQuoteFetcher/useQuoteFetcher";
 
 beforeEach(() => {
@@ -29,13 +29,16 @@ describe("useQuoteFetcher", () => {
 
     const { result } = renderHook(() => useQuoteFetcher());
 
-    expect(result.current.isLoading).toBe(true);
+    expect(result.current.isLoading).toBe(false);
 
     await act(async () => {
-      const data = await result.current.fetchQuote();
+      const data = await result.current.fetchQuote("random");
       expect(data).toEqual(mockQuote);
     });
 
+    expect(fetch).toHaveBeenCalledWith(
+      expect.stringContaining("/api/quotes/random"),
+    );
     expect(result.current.isLoading).toBe(false);
     expect(result.current.hasError).toBeNull();
     expect(result.current.quotesData).toEqual(mockQuote);
@@ -46,7 +49,11 @@ describe("useQuoteFetcher", () => {
 
     const { result } = renderHook(() => useQuoteFetcher());
 
-    await act(async () => await result.current.fetchQuote());
+    await act(async () => {
+      await expect(result.current.fetchQuote()).rejects.toThrow(
+        "Network response was not ok",
+      );
+    });
 
     expect(result.current.isLoading).toBe(false);
     expect(result.current.hasError).toBeInstanceOf(Error);
@@ -58,10 +65,13 @@ describe("useQuoteFetcher", () => {
     const { result } = renderHook(() => useQuoteFetcher());
 
     await act(async () => {
-      await result.current.fetchQuote();
+      await expect(result.current.fetchQuote()).rejects.toThrow(
+        "Network error",
+      );
     });
 
     expect(result.current.hasError).toBeInstanceOf(Error);
     expect(result.current.hasError.message).toBe("Network error");
+    expect(result.current.isLoading).toBe(false);
   });
 });

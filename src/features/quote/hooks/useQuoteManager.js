@@ -25,13 +25,7 @@ export const useQuoteManager = () => {
   // Global statistics state
   const [, setStatistic] = useAtom(statisticAtom);
 
-  // Fetch logic from dedicated hook
-  const {
-    isLoading,
-    setLoading,
-    hasError,
-    fetchQuote,
-  } = useQuoteFetcher();
+  const { isLoading, hasError, fetchQuote } = useQuoteFetcher();
 
   // Prevent duplicate initial fetch, especially in React StrictMode
   const hasFetched = useRef(false);
@@ -48,65 +42,67 @@ export const useQuoteManager = () => {
 
     if (quote?.id) {
       hasFetched.current = true;
-      setLoading(false);
       return;
     }
 
     hasFetched.current = true;
 
     const init = async () => {
-      const data = await fetchQuote(tagOption);
+      try {
+        const data = await fetchQuote(tagOption);
 
-      if (data) {
-        setQuote(data);
+        if (data) {
+          if (tagOption === "random") {
+            setQuote(data);
+          } else {
+            const tempQuote = data.quotes;
 
-        setStatistic((prev) => ({
-          ...prev,
-          generatedCount: prev.generatedCount + 1,
-        }));
+            if (tempQuote?.length) {
+              setQuote(tempQuote[randomNum(tempQuote)]);
+            }
+          }
+
+          setStatistic((prev) => ({
+            ...prev,
+            generatedCount: prev.generatedCount + 1,
+          }));
+        }
+      } catch {
+        // L'erreur est déjà exposée par useQuoteFetcher via hasError.
       }
     };
 
     init();
-  }, [
-    fetchQuote,
-    quote?.id,
-    setLoading,
-    setQuote,
-    setStatistic,
-    tagOption,
-  ]);
+  }, [fetchQuote, quote?.id, setQuote, setStatistic, tagOption]);
 
-  /**
-   * Change tag option used for quote generation.
-   */
   const changeTag = (e) => {
     setTagOption(e.target.value);
   };
 
-  /**
-   * Generate a new quote when triggered by the user.
-   */
   const generateQuote = async (e) => {
     e?.preventDefault();
 
-    const data =
-      tagOption === "random"
-        ? await fetchQuote()
-        : await fetchQuote(tagOption);
+    try {
+      const data = await fetchQuote(tagOption);
 
-    if (data) {
+      if (!data) return;
+
       if (tagOption === "random") {
         setQuote(data);
       } else {
         const tempQuote = data.quotes;
-        setQuote(tempQuote[randomNum(tempQuote)]);
+
+        if (tempQuote?.length) {
+          setQuote(tempQuote[randomNum(tempQuote)]);
+        }
       }
 
       setStatistic((prev) => ({
         ...prev,
         generatedCount: prev.generatedCount + 1,
       }));
+    } catch {
+      // L'erreur est exposée via hasError.
     }
   };
 
