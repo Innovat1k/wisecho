@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect } from "vitest";
-import { useResponsive } from "../shared/hooks/useResponsive/useResponsive";
+import { useResponsive } from "../shared/hooks/useResponsive";
 import { render, screen } from "@testing-library/react";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
 
-vi.mock("../shared/hooks/useResponsive/useResponsive", () => ({
+vi.mock("../shared/hooks/useResponsive", () => ({
   useResponsive: vi.fn(),
 }));
 

@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { getLocalStorage } from "../utils/utils";
+import { getLocalStorage } from "../shared/utils/utils";
 
 // Load persisted data
 const persistedData = getLocalStorage("genQuote", {});

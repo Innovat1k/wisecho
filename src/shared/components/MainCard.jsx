@@ -1,8 +1,8 @@
 import { LuChartBar, LuPalette } from "react-icons/lu";
-import ActionForm from "../ActionForm/ActionForm";
+import ActionForm from "./ActionForm";
 import { motion } from "framer-motion";
-import { useQuoteManager } from "../../../features/quote/hooks/useQuoteManager";
-import Quote from "../../../features/quote/components/Quote";
+import { useQuoteManager } from "@/features/quote/hooks/useQuoteManager";
+import Quote from "@/features/quote/Quote";
 
 function MainCard({ openDetails, openThemeMenu, isOnMobile }) {
   const { quote, generateQuote, status, changeTag } = useQuoteManager();

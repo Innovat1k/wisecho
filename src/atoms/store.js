@@ -1,5 +1,5 @@
 import { createStore } from "jotai";
-import { getLocalStorage } from "../utils/utils";
+import { getLocalStorage } from "../shared/utils/utils";
 import {
   favoriteQuotesAtom,
   quoteAtom,
@@ -17,7 +17,7 @@ export const initStore = () => {
   store.set(favoriteQuotesAtom, persisted.favorite ?? []);
   store.set(
     statisticAtom,
-    persisted.statistic ?? { generatedCount: 0, favoritesCount: 0 }
+    persisted.statistic ?? { generatedCount: 0, favoritesCount: 0 },
   );
   store.set(themeAtom, persisted.theme ?? "modern");
   store.set(tagAtom, persisted.tag ?? "random");

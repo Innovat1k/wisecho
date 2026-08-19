@@ -2,14 +2,11 @@ import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { createStore, Provider } from "jotai";
 import { useQuoteManager } from "./useQuoteManager";
-import { quoteAtom, statisticAtom, tagAtom } from "../../../shared/atoms/atoms";
-import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher/useQuoteFetcher";
-import {
-  mockLifeQuotes,
-  mockQuote,
-} from "../../../shared/__tests__/mockQuotes";
+import { quoteAtom, statisticAtom, tagAtom } from "@/atoms/atoms";
+import { useQuoteFetcher } from "@/shared/hooks/useQuoteFetcher";
+import { mockLifeQuotes, mockQuote } from "@/__tests__/mockQuotes";
 
-vi.mock("../../../shared/hooks/useQuoteFetcher/useQuoteFetcher", () => ({
+vi.mock("@/shared/hooks/useQuoteFetcher", () => ({
   useQuoteFetcher: vi.fn(),
 }));
 
@@ -34,9 +31,7 @@ describe("useQuoteManager", () => {
 
     store = createStore();
 
-    Wrapper = ({ children }) => (
-      <Provider store={store}>{children}</Provider>
-    );
+    Wrapper = ({ children }) => <Provider store={store}>{children}</Provider>;
   });
 
   it("should allow quote tag changing before generation", () => {

@@ -1,17 +1,17 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { describe, expect } from "vitest";
 import App from "../App";
-import { useResponsive } from "../shared/hooks/useResponsive/useResponsive";
+import { useResponsive } from "../shared/hooks/useResponsive";
 import { createStore, Provider } from "jotai";
-import { quoteAtom, statisticAtom, themeAtom } from "../shared/atoms/atoms";
+import { quoteAtom, statisticAtom, themeAtom } from "../atoms/atoms";
 import userEvent from "@testing-library/user-event";
-import { useQuoteFetcher } from "../shared/hooks/useQuoteFetcher/useQuoteFetcher";
+import { useQuoteFetcher } from "../shared/hooks/useQuoteFetcher";
 
-vi.mock("../shared/hooks/useResponsive/useResponsive", () => ({
+vi.mock("../shared/hooks/useResponsive", () => ({
   useResponsive: vi.fn(),
 }));
 
-vi.mock("../shared/hooks/useQuoteFetcher/useQuoteFetcher", () => ({
+vi.mock("../shared/hooks/useQuoteFetcher", () => ({
   useQuoteFetcher: vi.fn(),
 }));
 

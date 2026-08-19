@@ -1,5 +1,5 @@
 import { LuServerOff } from "react-icons/lu";
-import Loader from "../../../shared/components/Loader";
+import Loader from "@/shared/components/ui/Loader";
 import { motion } from "framer-motion";
 
 function Quote({ quote, status }) {

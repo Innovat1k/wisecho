@@ -1,10 +1,6 @@
 import { createStore, Provider } from "jotai";
 import { describe } from "vitest";
-import {
-  favoriteQuotesAtom,
-  statisticAtom,
-  themeAtom,
-} from "../../atoms/atoms";
+import { favoriteQuotesAtom, statisticAtom, themeAtom } from "@/atoms/atoms";
 import { act, renderHook } from "@testing-library/react";
 import { usePersistStorage } from "./usePersistStorage";
 
@@ -30,7 +26,7 @@ describe("usePersistStorage", () => {
 
     expect(setItemSpy).toHaveBeenCalledWith(
       "genQuote",
-      expect.stringContaining('"theme":"retro"')
+      expect.stringContaining('"theme":"retro"'),
     );
 
     setItemSpy.mockRestore();

@@ -3,20 +3,20 @@ import { beforeEach, describe } from "vitest";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
 import { createStore, Provider } from "jotai";
-import { quoteAtom, statisticAtom } from "../shared/atoms/atoms";
-import { useResponsive } from "../shared/hooks/useResponsive/useResponsive";
-import { useQuoteFetcher } from "../shared/hooks/useQuoteFetcher/useQuoteFetcher";
+import { quoteAtom, statisticAtom } from "../atoms/atoms";
+import { useResponsive } from "../shared/hooks/useResponsive";
+import { useQuoteFetcher } from "../shared/hooks/useQuoteFetcher";
 import {
   mockFetchedQuote,
   mockInspirationQuotes,
   mockQuote,
-} from "../shared/__tests__/mockQuotes";
+} from "./mockQuotes";
 
-vi.mock("../shared/hooks/useResponsive/useResponsive", () => ({
+vi.mock("../shared/hooks/useResponsive", () => ({
   useResponsive: vi.fn(),
 }));
 
-vi.mock("../shared/hooks/useQuoteFetcher/useQuoteFetcher", () => ({
+vi.mock("../shared/hooks/useQuoteFetcher", () => ({
   useQuoteFetcher: vi.fn(),
 }));
 

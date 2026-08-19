@@ -1,8 +1,8 @@
-import Loader from "../Loader";
-import MainCard from "../MainCard/MainCard";
-import AppDetails from "../AppDetails/AppDetails";
-import { useShowDetails } from "../../hooks/useShowDetails/useShowDetails";
-import { useResponsive } from "../../hooks/useResponsive/useResponsive";
+import Loader from "../ui/Loader";
+import MainCard from "../MainCard";
+import AppDetails from "../AppDetails";
+import { useShowDetails } from "@/shared/hooks/useShowDetails";
+import { useResponsive } from "@/shared/hooks/useResponsive";
 import { AnimatePresence } from "framer-motion";
 
 function AppLayout({ toggleThemeCard }) {

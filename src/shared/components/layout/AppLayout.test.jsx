@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect } from "vitest";
 
-vi.mock("../../hooks/useResponsive/useResponsive", () => ({ useResponsive: vi.fn() }));
-vi.mock("../../hooks/useShowDetails/useShowDetails", () => ({ useShowDetails: vi.fn() }));
+vi.mock("@/shared/hooks/useResponsive", () => ({ useResponsive: vi.fn() }));
+vi.mock("@/shared/hooks/useShowDetails", () => ({ useShowDetails: vi.fn() }));
 
 import AppLayout from "./AppLayout";
-import { useResponsive } from "../../hooks/useResponsive/useResponsive";
-import { useShowDetails } from "../../hooks/useShowDetails/useShowDetails";
+import { useResponsive } from "@/shared/hooks/useResponsive";
+import { useShowDetails } from "@/shared/hooks/useShowDetails";
 
 const renderComponent = ({
   isReady = false,

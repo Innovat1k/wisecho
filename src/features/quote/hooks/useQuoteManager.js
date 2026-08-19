@@ -10,13 +10,9 @@
 
 import { useAtom } from "jotai";
 import { useEffect, useRef } from "react";
-import {
-  quoteAtom,
-  statisticAtom,
-  tagAtom,
-} from "../../../shared/atoms/atoms";
-import { randomNum } from "../../../shared/utils/utils";
-import { useQuoteFetcher } from "../../../shared/hooks/useQuoteFetcher/useQuoteFetcher";
+import { quoteAtom, statisticAtom, tagAtom } from "@/atoms/atoms";
+import { randomNum } from "@/shared/utils/utils";
+import { useQuoteFetcher } from "@/shared/hooks/useQuoteFetcher";
 
 export const useQuoteManager = () => {
   // Global state for current quote

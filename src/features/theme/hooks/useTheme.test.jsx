@@ -2,7 +2,7 @@ import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect } from "vitest";
 import { useTheme } from "./useTheme";
 import { createStore, Provider } from "jotai";
-import { themeAtom } from "../../../shared/atoms/atoms";
+import { themeAtom } from "@/atoms/atoms";
 
 describe("useTheme", () => {
   let store;

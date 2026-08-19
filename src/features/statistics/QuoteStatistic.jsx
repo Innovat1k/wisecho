@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
 import { motion } from "framer-motion";
-import { statisticAtom } from "../../shared/atoms/atoms";
-import { formatNumber } from "../../shared/utils/utils";
+import { statisticAtom } from "@/atoms/atoms";
+import { formatNumber } from "@/shared/utils/utils";
 
 function QuoteStatistic() {
   const { generatedCount, favoritesCount } = useAtomValue(statisticAtom);
