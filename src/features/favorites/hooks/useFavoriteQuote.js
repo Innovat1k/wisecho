@@ -1,9 +1,5 @@
 import { useAtom, useAtomValue } from "jotai";
-import {
-  favoriteQuotesAtom,
-  quoteAtom,
-  statisticAtom,
-} from "../../../atoms/atoms";
+import { favoriteQuotesAtom, quoteAtom, statisticAtom } from "@/atoms/atoms";
 import { useCallback, useEffect, useState } from "react";
 
 export const useFavoriteQuote = () => {
@@ -18,7 +14,7 @@ export const useFavoriteQuote = () => {
   // Check if the current quote is already in the favorites list
   const isAlreadyFavorite = useCallback(
     () => favQuotes.some((item) => item.id === current?.id),
-    [favQuotes, current]
+    [favQuotes, current],
   );
 
   // Add the current quote to favorite
@@ -48,7 +44,7 @@ export const useFavoriteQuote = () => {
         : {
             isInFav: false,
             label: "Add to favorite",
-          }
+          },
     );
   }, [isAlreadyFavorite, current]);
 

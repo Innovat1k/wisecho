@@ -6,11 +6,11 @@ import {
   favoriteQuotesAtom,
   quoteAtom,
   statisticAtom,
-} from "../../../atoms/atoms";
+} from "@/atoms/atoms";
 import {
   mockFavoriteQuotes,
   mockQuote,
-} from "../../../__tests__/mockQuotes";
+} from "@/__tests__/mockQuotes";
 
 describe("useFavoriteQuote", () => {
   let store;

@@ -1,7 +1,7 @@
 import { LuChevronRight, LuRefreshCw } from "react-icons/lu";
 import { motion } from "framer-motion";
-import FavoriteQuotes from "../../features/favorites/FavoriteQuotes";
-import QuoteStatistic from "../../features/statistics/QuoteStatistic";
+import FavoriteQuotes from "@/features/favorites/FavoriteQuotes";
+import QuoteStatistic from "@/features/statistics/QuoteStatistic";
 import { usePersistStorage } from "../hooks/usePersistStorage"; 
 
 function AppDetails({ closeDetails, isOnMobile }) {

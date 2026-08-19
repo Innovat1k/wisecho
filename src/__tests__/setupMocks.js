@@ -17,8 +17,8 @@ export function mockJotai() {
  * utils partial mock
  */
 export function mockUtils() {
-  vi.mock("../../src/shared/utils/utils", async () => {
-    const actual = await vi.importActual("../../src/shared/utils/utils");
+  vi.mock("@/src/shared/utils/utils", async () => {
+    const actual = await vi.importActual("@/src/shared/utils/utils");
     return {
       ...actual,
       formatNumber: vi.fn(),

@@ -1,6 +1,6 @@
 import { LuHeart } from "react-icons/lu";
 import Button from "./ui/Button";
-import { useFavoriteQuote } from "../../features/favorites/hooks/useFavoriteQuote";
+import { useFavoriteQuote } from "@/features/favorites/hooks/useFavoriteQuote";
 import { primaryTags } from "../utils/utils";
 
 function ActionForm({ generateQuote, changeTag }) {

@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import { themeAtom } from "../../../atoms/atoms";
+import { themeAtom } from "@/atoms/atoms";
 import { useEffect, useState } from "react";
 
 export const useTheme = () => {

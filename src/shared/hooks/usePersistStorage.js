@@ -12,7 +12,7 @@ import {
   favoriteQuotesAtom,
   statisticAtom,
   themeAtom,
-} from "../../atoms/atoms";
+} from "@/atoms/atoms";
 
 export const usePersistStorage = () => {
   const [quote, setQuote] = useAtom(quoteAtom);

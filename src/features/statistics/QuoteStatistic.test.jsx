@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, vi } from "vitest";
 import QuoteStatistic from "./QuoteStatistic";
 import { useAtomValue } from "jotai";
-import { formatNumber } from "../../shared/utils/utils";
+import { formatNumber } from "@/shared/utils/utils";
 
 vi.mock("jotai", async () => {
   const actual = await vi.importActual("jotai");
@@ -13,7 +13,7 @@ vi.mock("jotai", async () => {
 });
 
 vi.mock("../../shared/utils/utils", async () => {
-  const actual = await vi.importActual("../../shared/utils/utils");
+  const actual = await vi.importActual("@/shared/utils/utils");
   return {
     ...actual,
     formatNumber: vi.fn(),
