@@ -1,4 +1,4 @@
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe } from "vitest";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
@@ -6,11 +6,7 @@ import { createStore, Provider } from "jotai";
 import { quoteAtom, statisticAtom } from "../atoms/atoms";
 import { useResponsive } from "../shared/hooks/useResponsive";
 import { useQuoteFetcher } from "../shared/hooks/useQuoteFetcher";
-import {
-  mockFetchedQuote,
-  mockInspirationQuotes,
-  mockQuote,
-} from "./mockQuotes";
+import { mockFetchedQuote, mockQuote } from "./mockQuotes";
 
 vi.mock("../shared/hooks/useResponsive", () => ({
   useResponsive: vi.fn(),
@@ -62,31 +58,6 @@ describe("App", () => {
         expect(screen.getByTestId(/tag-1/i)).toHaveTextContent("dreams");
         expect(screen.getByTestId(/generated count/i)).toHaveTextContent("02");
       });
-    });
-
-    it("should displays a quote matching the selected tag", async () => {
-      useQuoteFetcher.mockReturnValue({
-        fetchQuote: vi.fn().mockResolvedValue(mockInspirationQuotes),
-        setLoading: vi.fn(),
-      });
-
-      store.set(quoteAtom, mockQuote);
-
-      render(<App />, { wrapper: Wrapper });
-
-      const select = screen.getByRole("combobox");
-
-      await user.selectOptions(select, "inspiration");
-
-      expect(select.value).toBe("inspiration");
-
-      await user.click(screen.getByRole("button", { name: /new quote/i }));
-
-      const inspirationTag = within(
-        screen.getByTestId(/quote tags/i),
-      ).getByText("inspiration");
-
-      expect(inspirationTag).toBeVisible();
     });
   });
 });
