@@ -1,38 +1,63 @@
 import { motion } from "framer-motion";
 
-function Button({ type, label, icon, onClick, disabled, ariaLabel }) {
+function Button({
+  type = "button",
+  label,
+  icon,
+  onClick,
+  disabled = false,
+  ariaLabel,
+  variant = "secondary",
+  className = "",
+  children,
+}) {
   const isSubmit = type === "submit";
-  const isFavorite = label === "Favorite";
 
+  //Unified base styles for all buttons
   const baseStyles =
-    "flex justify-center gap-2 items-center px-2 py-1 rounded cursor-pointer transition-colors duration-300 hover:shadow";
-  const submitStyles =
-    "bg-[var(--btn-primary-bg)] hover:bg-[var(--btn-primary-bg-hover)]";
-  const secondaryStyles =
-    "bg-[var(--btn-secondary-bg)] hover:bg-[var(--btn-secondary-bg-hover)]";
-  const favStyles =
-    "bg-[var(--btn-fav-active-bg)] text-[var(--btn-fav-active-text)]";
+    "flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs sm:text-sm font-medium transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer";
 
-  const buttonStyles = `${baseStyles} ${
-    isSubmit ? submitStyles : isFavorite ? favStyles : secondaryStyles
-  }`;
-  const textStyles = isSubmit
-    ? "text-[var(--btn-primary-text)] hover:text-[var(--btn-primary-text-hover)]"
-    : "text-[var(--btn-secondary-text)] hover:text-[var(--btn-secondary-text-hover)]";
+  //Style variants
+  const variantStyles = {
+    primary:
+      "bg-[var(--btn-primary-bg)] hover:bg-[var(--btn-primary-bg-hover)] text-[var(--btn-primary-text)] hover:text-[var(--btn-primary-text-hover)] shadow-sm",
+    secondary:
+      "bg-[var(--btn-secondary-bg)] hover:bg-[var(--btn-secondary-bg-hover)] text-[var(--btn-secondary-text)] hover:text-[var(--btn-secondary-text-hover)]",
+    ghost:
+      "bg-transparent hover:bg-black/5 dark:hover:bg-white/5 text-[var(--icon-ui-color)] hover:text-[var(--icon-ui-hover)]",
+  };
 
-const isAlreadyFavorite = /favorite/i.test(label) && disabled;
+  const selectedVariant =
+    variantStyles[variant] ||
+    (isSubmit ? variantStyles.primary : variantStyles.secondary);
+
+  const combinedClassName =
+    `${baseStyles} ${selectedVariant} ${className}`.trim();
+  const computedAriaLabel =
+    ariaLabel || (typeof label === "string" ? label : undefined);
 
   return (
     <motion.button
-      className={buttonStyles}
-      disabled={isAlreadyFavorite}
       type={type}
+      className={combinedClassName}
+      disabled={disabled}
       onClick={onClick}
-      whileHover={{ scale: 1.02 }}
-      aria-label={ariaLabel}
+      whileHover={!disabled ? { scale: 1.03 } : undefined}
+      whileTap={!disabled ? { scale: 0.97 } : undefined}
+      aria-label={computedAriaLabel}
     >
-      {icon}
-      <span className={textStyles}>{label}</span>
+      {children ? (
+        children
+      ) : (
+        <>
+          {icon && (
+            <span className="flex items-center justify-center shrink-0">
+              {icon}
+            </span>
+          )}
+          {label && <span>{label}</span>}
+        </>
+      )}
     </motion.button>
   );
 }

@@ -31,19 +31,6 @@ describe("App", () => {
       Wrapper = ({ children }) => <Provider store={store}>{children}</Provider>;
     });
 
-    it("should displays the 'In favorite' label if the quote is already in favorites", async () => {
-      store.set(quoteAtom, mockQuote);
-      render(<App />, { wrapper: Wrapper });
-
-      await user.click(
-        screen.getByRole("button", { name: /add to favorite/i }),
-      );
-
-      await waitFor(() => {
-        expect(screen.getByText(/in favorite/i)).toBeVisible();
-      });
-    });
-
     it("should adds a quote to favorites and displays it in the FavoriteQuotes component", async () => {
       store.set(favoriteQuotesAtom, []);
       store.set(quoteAtom, mockQuote);
@@ -59,7 +46,6 @@ describe("App", () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByText(/in favorite/i)).toBeVisible();
         expect(screen.getByTestId("Favorite quotes")).toHaveTextContent(
           /the middle of every difficulty/i,
         );

@@ -31,7 +31,7 @@ function Quote({ quote, status }) {
             className="relative p-6 md:p-4 rounded-xl bg-[var(--bg-quote)] shadow-sm mb-6"
           >
             <p
-              className="text-xl md:text-lg font-medium text-[var(--text-primary)] leading-relaxed"
+              className="text-lg md:text-xl font-medium text-[var(--text-primary)] leading-relaxed text-center"
               data-testid="q-text"
             >
               “ {quote.body} ”
@@ -39,7 +39,7 @@ function Quote({ quote, status }) {
           </motion.blockquote>
 
           <div
-            className="mb-14 flex flex-col gap-3 items-center text-[var(--text-secondary)]"
+            className="mb-6 flex flex-col gap-3 items-center text-[var(--text-secondary)]"
             data-testid="Quote tags"
           >
             {quote.tags?.length > 0 && (
@@ -58,7 +58,7 @@ function Quote({ quote, status }) {
 
             <cite
               data-testid="q-author"
-              className="text-sm italic text-[var(--text-secondary)] mt-2"
+              className="text-sm md:text-base italic text-[var(--text-secondary)] mt-2"
             >
               — {quote.author}
             </cite>

@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect } from "vitest";
 import { useResponsive } from "../shared/hooks/useResponsive";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
 
@@ -8,47 +8,62 @@ vi.mock("../shared/hooks/useResponsive", () => ({
   useResponsive: vi.fn(),
 }));
 
-const renderComponent = () => {
-  render(<App />);
-  const appTitle = screen.getByRole("heading", { level: 1 });
-  return {
-    appTitle,
-    openDetailsButton: screen.queryByRole("button", { name: /open details/i }),
-    closeDetailsButton: screen.queryByRole("button", {
-      name: /close details/i,
-    }),
-  };
-};
-
-let user;
-
-beforeEach(() => {
-  useResponsive.mockReturnValue({ isReady: true, isMobile: true });
-  user = userEvent.setup();
-});
-
 describe("App", () => {
+  let user;
+
+  beforeEach(() => {
+    useResponsive.mockReturnValue({ isReady: true, isMobile: true });
+    user = userEvent.setup();
+  });
+
   describe("Mobile", () => {
-    it("should AppDetails and hides MainCard when 'open details' is clicked", async () => {
-      const { appTitle, openDetailsButton } = renderComponent();
+    it("closes QuoteCard and opens MEtricsPanel if 'open details' is clicked", async () => {
+      render(<App />);
 
-      await user.click(openDetailsButton);
+      expect(
+        screen.getByRole("heading", { name: /Wisecho/i }),
+      ).toBeInTheDocument();
 
-      expect(appTitle).not.toBeVisible();
-      expect(await screen.findByText(/app details/i)).toBeInTheDocument();
+      await user.click(
+        screen.getByRole("button", {
+          name: /open metrics panel/i,
+        }),
+      );
+
+      await waitFor(() => {
+        expect(
+          screen.queryByRole("heading", { name: /Wisecho/i }),
+        ).not.toBeInTheDocument();
+      });
+
+      expect(
+        await screen.findByRole("heading", { name: /app details/i }),
+      ).toBeInTheDocument();
     });
 
-    it("should returns to MainCard when 'close details' is clicked", async () => {
-      const { openDetailsButton } = renderComponent();
+    it("returns to QuoteCard when 'close details' is clicked", async () => {
+      render(<App />);
 
-      await user.click(openDetailsButton);
+      await user.click(
+        screen.getByRole("button", {
+          name: /open metrics panel/i,
+        }),
+      );
+
+      expect(
+        await screen.findByRole("heading", { name: /app details/i }),
+      ).toBeInTheDocument();
 
       await user.click(
         screen.queryByRole("button", {
           name: /close details/i,
         }),
       );
-      expect(await screen.findByRole("heading", { level: 1 })).toBeVisible();
+
+      expect(
+        await screen.findByRole("heading", { name: /Wisecho/i }),
+      ).toBeInTheDocument();
+      expect(screen.queryByText(/app details/i)).not.toBeInTheDocument();
     });
   });
 });

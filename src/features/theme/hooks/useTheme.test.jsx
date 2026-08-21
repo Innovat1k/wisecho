@@ -13,76 +13,39 @@ describe("useTheme", () => {
     Wrapper = ({ children }) => <Provider store={store}>{children}</Provider>;
   });
 
-  it("should have modern theme by default", () => {
+  it("does have modern theme by default", () => {
     const { result } = renderHook(useTheme);
     expect(result.current.theme).toBe("modern");
   });
 
-  it("should preview any of the 3 themes", () => {
+  it("toggles popover open/close state", () => {
     const { result } = renderHook(useTheme);
 
-    const themes = ["soft", "warm", "modern"];
+    act(() => result.current.togglePopover());
+    expect(result.current.isPopoverOpen).toBeTruthy();
 
-    themes.forEach((theme) => {
-      act(() => result.current.themeActions.previewTheme(theme));
-      expect(result.current.theme).toBe(theme);
-    });
+    act(() => result.current.togglePopover());
+    expect(result.current.isPopoverOpen).toBeFalsy();
   });
 
-  it("should toggle themeCard", () => {
-    const { result } = renderHook(useTheme);
-
-    act(() => result.current.toggleThemeCard());
-    expect(result.current.isThemeCardOpen).toBeTruthy();
-
-    act(() => result.current.toggleThemeCard());
-    expect(result.current.isThemeCardOpen).toBeFalsy();
-  });
-
-  it("should allow theme cancelling then close themeCard", () => {
-    const fakeEvent = { preventDefault: vi.fn() };
-
-    store.set(themeAtom, "soft");
-
-    const { result } = renderHook(() => useTheme(), { wrapper: Wrapper });
-
-    act(() => result.current.toggleThemeCard());
-    expect(result.current.isThemeCardOpen).toBeTruthy();
-
-    act(() => result.current.themeActions.previewTheme("warm"));
-    expect(result.current.theme).toBe("warm");
-
-    act(() => result.current.themeActions.cancelThemeChange(fakeEvent));
-    expect(result.current.theme).toBe("soft");
-    expect(result.current.isThemeCardOpen).toBeFalsy();
-  });
-
-  it("should apply theme changing", () => {
-    const fakeEvent = { preventDefault: vi.fn() };
-
+  it("sets the clicked theme", () => {
     store.set(themeAtom, "warm");
 
     const { result } = renderHook(() => useTheme(), { wrapper: Wrapper });
 
-    act(() => result.current.toggleThemeCard());
-    expect(result.current.isThemeCardOpen).toBeTruthy();
-
-    act(() => result.current.themeActions.previewTheme("modern"));
+    act(() => result.current.selectTheme("modern"));
     expect(result.current.theme).toBe("modern");
-
-    act(() => result.current.themeActions.applyTheme(fakeEvent));
-    expect(result.current.theme).toBe("modern");
-    expect(result.current.isThemeCardOpen).toBeFalsy();
   });
 
-  it("should have correct theme class on document body", () => {
+  it("does have correct theme class on document body", () => {
     store.set(themeAtom, "modern");
 
     const { result } = renderHook(() => useTheme(), { wrapper: Wrapper });
 
     expect(document.body.className).toBe("modern");
 
-    act(() => result.current.themeActions.previewTheme("soft"));
+    act(() => result.current.selectTheme("soft"));
     expect(result.current.theme).toBe("soft");
+    expect(document.body.className).toBe("soft");
   });
 });

@@ -1,16 +1,12 @@
-import ThemeCard from "@/features/theme/ThemeCard";
-import { useTheme } from "@/features/theme/hooks/useTheme";
 import { usePersistStorage } from "@/shared/hooks/usePersistStorage";
-import AppLayout from "@/shared/components/layout/AppLayout";
+import QuoteLayout from "@/shared/components/layout/QuoteLayout";
 
 function App() {
-  const { isThemeCardOpen, toggleThemeCard, themeActions } = useTheme();
   usePersistStorage();
 
   return (
-    <div className="h-[100dvh] flex items-start justify-center sm:justify-between md:items-start sm:p-3 lg:p-6 bg-[var(--bg)] overflow-hidden">
-      <ThemeCard isOpened={isThemeCardOpen} themeActions={themeActions} />
-      <AppLayout toggleThemeCard={toggleThemeCard} />
+    <div className="min-h-[100dvh] w-full flex items-start md:items-center justify-center p-4 sm:p-6 lg:p-10 bg-[var(--bg)] overflow-x-hidden">
+      <QuoteLayout />
     </div>
   );
 }
