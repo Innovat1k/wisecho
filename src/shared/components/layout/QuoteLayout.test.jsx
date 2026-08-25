@@ -51,7 +51,7 @@ describe("QuoteLayout", () => {
         screen.getByRole("heading", { name: /wisecho/i }),
       ).toBeInTheDocument();
       expect(
-        screen.getByRole("heading", { name: /app details/i }),
+        screen.getByRole("heading", { name: /Analytics & favorites/i }),
       ).toBeInTheDocument();
     });
   });
@@ -80,7 +80,7 @@ describe("QuoteLayout", () => {
         screen.queryByRole("heading", { name: /wisecho/i }),
       ).not.toBeInTheDocument();
       expect(
-        screen.getByRole("heading", { name: /app details/i }),
+        screen.getByRole("heading", { name: /Analytics & favorites/i }),
       ).toBeInTheDocument();
     });
   });

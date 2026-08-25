@@ -14,11 +14,12 @@ function QuoteCard({ openDetails, isOnMobile }) {
       exit={{ opacity: 0, scale: 0.98 }}
       className="relative w-full max-w-md md:max-w-xl"
     >
-      <div className="min-h-[360px] sm:min-h-[420px] flex flex-col justify-between p-6 bg-[var(--container-bg)] border border-[var(--select-border)] rounded-3xl shadow-xl">
+      <div className="h-full min-h-[360px] sm:min-h-[420px] flex flex-col justify-between p-6 bg-[var(--container-bg)] rounded-2xl shadow-xl">
         <div className="flex justify-between items-center w-full">
           <h1 className="text-xl font-bold text-[var(--title-primary)] text-center w-full">
             Wisecho
           </h1>
+
           {isOnMobile && (
             <button
               aria-label="Open metrics panel"
