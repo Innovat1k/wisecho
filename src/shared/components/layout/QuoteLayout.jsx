@@ -1,6 +1,6 @@
 import Loader from "../ui/Loader";
 import QuoteCard from "../QuoteCard";
-import AppDetails from "../AppDetails";
+import MetricsPanel from "../MetricsPanel";
 import { useShowDetails } from "@/shared/hooks/useShowDetails";
 import { useResponsive } from "@/shared/hooks/useResponsive";
 import { AnimatePresence } from "framer-motion";
@@ -12,19 +12,19 @@ function QuoteLayout() {
   if (!screen.isReady) return <Loader />;
 
   return (
-    <main className="w-full max-w-5xl flex flex-col md:flex-row items-center justify-start md:justify-center gap-6 lg:gap-10 pt-6 md:pt-0">
+    <main className="w-full max-w-5xl flex flex-col md:flex-row items-center md:items-start justify-start md:justify-center gap-6 lg:gap-10 pt-6 md:pt-0">
       {screen.isMobile ? (
         <AnimatePresence mode="wait">
           {!showDetails ? (
             <QuoteCard
-              key="main-card"
+              key="quote-card"
               openDetails={handleShowDetails}
               isOnMobile={screen.isMobile}
             />
           ) : (
-            <AppDetails
-              key="app-details"
-              closeDetails={handleShowDetails}
+            <MetricsPanel
+              key="metrics-panel"
+              closePanel={handleShowDetails}
               isOnMobile={screen.isMobile}
             />
           )}
@@ -32,7 +32,7 @@ function QuoteLayout() {
       ) : (
         <>
           <QuoteCard />
-          <AppDetails />
+          <MetricsPanel />
         </>
       )}
     </main>

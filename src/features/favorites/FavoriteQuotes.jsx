@@ -1,75 +1,59 @@
-import { LuTrash } from "react-icons/lu";
 import { AnimatePresence, motion } from "framer-motion";
 import { useFavoriteQuote } from "./hooks/useFavoriteQuote";
+import { FavoriteQuoteItem } from "./FavoriteQuoteItem";
 
-function FavoriteQuotes() {
+function FavoriteQuotes({ eyebrowStyle }) {
   const { favQuotes, removeFavorite } = useFavoriteQuote();
 
   return (
-    <div className="h-[70%] bg-[var(--fav-bg)] rounded overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--btn-primary-bg)] scrollbar-track-[var(--container)]">
-      <h3 className="mt-4 text-[var(--title-secondary)] mb-4">Favorites</h3>
+    <section
+      className="flex flex-col h-full min-h-0"
+      aria-labelledby="favorites-title"
+    >
+      <div className="flex items-center justify-between mb-4 shrink-0">
+        <h3 id="favorites-title" className={eyebrowStyle}>
+          Favorites
+        </h3>
+
+        {favQuotes.length > 0 && (
+          <span
+            className="px-2 py-0.5 text-[11px] font-bold rounded-full bg-[var(--tag-bg)] text-[var(--tag-text)] border border-[var(--select-border)]"
+            data-testid="favorites-metric"
+          >
+            {favQuotes.length}
+          </span>
+        )}
+      </div>
+
       <div
-        className="flex flex-col gap-4 px-4 duration-200 ease-in pb-4"
-        data-testid="Favorite quotes"
+        className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-2 custom-scrollbar"
+        data-testid="favorite-quotes"
       >
-        <AnimatePresence mode="sync">
+        <AnimatePresence mode="popLayout" initial={false}>
           {favQuotes.length > 0 ? (
             favQuotes.map((quote) => (
-              <motion.div
-                data-testid={`favorite-quote-${quote.id}`}
+              <FavoriteQuoteItem
                 key={quote.id ?? quote.body}
-                whileHover={{ scale: 1.03 }}
-                exit={{
-                  height: 0,
-                  opacity: 0,
-                  marginBottom: 0,
-                  paddingTop: 0,
-                  paddingBottom: 0,
-                  transition: { duration: 0.35, ease: "easeInOut" },
-                }}
-                transition={{
-                  duration: 0.4,
-                  type: "spring",
-                  bounce: 0,
-                  opacity: { duration: 0.2 },
-                }}
-                className="flex justify-between gap-6 items-center py-2 px-4 rounded bg-[var(--fav-bg)] hover:bg-[var(--fav-hover-bg)] shadow-[var(--fav-shadow)] hover:shadow-lg"
-              >
-                <div
-                  className="text-left w-11/12 text-[var(--fav-text-primary)] line-clamp-3"
-                  title={quote.body}
-                >
-                  {quote.body}
-                </div>
-                <motion.button
-                  whileTap={{ scale: 0.9 }}
-                  whileHover={{ scale: 1.1 }}
-                  className="text-[var(--icon-delete-color)] hover:text-[var(--icon-delete-hover)] cursor-pointer"
-                  type="button"
-                  aria-label={`Remove quote ${quote.id}`}
-                  onClick={() => removeFavorite(quote)}
-                  id={quote.id}
-                >
-                  <LuTrash size={20} />
-                </motion.button>
-              </motion.div>
+                quote={quote}
+                onRemove={removeFavorite}
+              />
             ))
           ) : (
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
+            <motion.div
               key="empty-favorite"
-              className="my-8 italic text-[var(--no-favorites-text)]"
-              role="alert"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="h-full flex items-center justify-center p-4 text-center rounded-2xl border border-dashed border-[var(--select-border)]"
             >
-              Your favorites list is still waiting for its first quote.
-            </motion.p>
+              <p className="text-xs text-[var(--no-favorites-text)] italic">
+                Your favorites list is still waiting for its first quote.
+              </p>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </section>
   );
 }
 
